@@ -56,7 +56,7 @@ export default function Nav() {
           {/* CTA */}
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] transition-all hover:bg-[#c8e600] hover:drop-shadow-[0px_4px_8px_rgba(222,255,0,0.35)]"
+            className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] transition-all hover:bg-kj-lime-hover hover:drop-shadow-lime-cta"
           >
             Start free →
           </Link>

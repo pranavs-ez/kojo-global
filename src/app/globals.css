@@ -4,11 +4,12 @@
 
 @theme {
   /* Brand colours */
-  --color-kj-primary:    #A448FA;
-  --color-kj-lime:       #DEFF00;
-  --color-kj-slate:      #505060;
-  --color-kj-dark:       #1e1e1e;
-  --color-kj-light:      #f8f8f2;
+  --color-kj-primary:      #A448FA;
+  --color-kj-lime:         #DEFF00;
+  --color-kj-lime-hover:   #c8e600;
+  --color-kj-slate:        #505060;
+  --color-kj-dark:         #1e1e1e;
+  --color-kj-light:        #f8f8f2;
 
   /* Semantic colours */
   --color-kj-success:    #16A34A;
@@ -42,7 +43,8 @@
   --shadow-card-hover: 0 12px 32px rgba(0,0,0,0.18);
   --shadow-nav:        0 8px 16px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.18);
   --shadow-focus:      0 0 0 2px rgba(107, 63, 212, 0.22);
-  --shadow-cta-hover:  0 4px 16px rgba(164, 72, 250, 0.35);
+  --shadow-cta-hover:      0 4px 16px rgba(164, 72, 250, 0.35);
+  --drop-shadow-lime-cta:  0px 4px 8px rgba(222,255,0,0.35);
   --shadow-glass:      0 20px 48px rgba(0,0,0,0.35);
 
   /* Durations */
