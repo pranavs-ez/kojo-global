@@ -28,9 +28,9 @@
   --color-surface-ticker:      #191915;
   --color-surface-card:        #232323;
 
-  /* Fonts */
-  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  /* Fonts — reference next/font injected variables */
+  --font-sans: var(--font-ibm-plex-sans), 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), 'Courier New', monospace;
 
   /* Border radii — sharp, precision factory aesthetic */
   --radius:    2px;

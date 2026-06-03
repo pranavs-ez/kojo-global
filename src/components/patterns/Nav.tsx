@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { NAV_LINKS } from '@/data/navigation'
-import ArrowRight from '@/components/atoms/ArrowRight'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -57,9 +56,9 @@ export default function Nav() {
           {/* CTA */}
           <Link
             href="/signup"
-            className="inline-flex items-center gap-1.5 justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] hover:bg-[#C8CC00] transition-colors"
+            className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] transition-all hover:bg-[#c8e600] hover:drop-shadow-[0px_4px_8px_rgba(222,255,0,0.35)]"
           >
-            Start free <ArrowRight size={12} strokeWidth={2} />
+            Start free →
           </Link>
         </div>
       </header>
