@@ -1,27 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { NAV_LINKS } from '@/data/navigation'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
       {/* Desktop nav */}
       <header
         role="banner"
-        className="sticky top-0 z-[1030] hidden md:block"
+        className="sticky top-0 z-[1030] hidden md:block transition-colors duration-200"
         style={{
-          background: `
-            radial-gradient(ellipse 70% 120% at 50% -20%, rgba(160,160,185,0.13) 0%, transparent 70%),
-            rgba(48, 48, 60, 0.72)
-          `,
-          backdropFilter: 'blur(20px) saturate(1.5) brightness(1.05)',
-          WebkitBackdropFilter: 'blur(20px) saturate(1.5) brightness(1.05)',
-          borderBottom: '1px solid rgba(48, 48, 60, 0.92)',
-          boxShadow: '0 8px 16px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.18)',
+          background: scrolled ? 'rgba(18,18,18,0.88)' : '#1e1e1e',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(10px)' : 'none',
+          borderBottom: '1px solid rgba(248,248,242,0.08)',
         }}
       >
         <div className="flex items-center justify-between h-[64px] px-[120px] max-w-[1440px] mx-auto">
@@ -36,12 +39,12 @@ export default function Nav() {
 
           {/* Nav links */}
           <nav aria-label="Main navigation">
-            <ul className="flex items-center gap-[52px] list-none m-0 p-0">
+            <ul className="flex items-center gap-8 list-none m-0 p-0">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-sans text-[14px] text-kj-light/50 hover:text-kj-light/80 transition-colors"
+                    className="font-sans text-[14px] text-kj-light opacity-50 hover:opacity-80 transition-opacity"
                   >
                     {link.label}
                   </Link>
@@ -53,7 +56,7 @@ export default function Nav() {
           {/* CTA */}
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center w-[136px] h-[38px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] hover:bg-[#C8CC00] transition-colors"
+            className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] hover:bg-[#C8CC00] transition-colors"
           >
             Start free →
           </Link>
@@ -65,10 +68,8 @@ export default function Nav() {
         role="banner"
         className="sticky top-0 z-[1030] md:hidden"
         style={{
-          background: 'rgba(30, 30, 30, 0.95)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(48, 48, 60, 0.92)',
+          background: '#1e1e1e',
+          borderBottom: '1px solid rgba(248,248,242,0.08)',
         }}
       >
         <div className="flex items-center justify-between h-[56px] px-6">
@@ -93,7 +94,6 @@ export default function Nav() {
           </button>
         </div>
 
-        {/* Offcanvas */}
         {open && (
           <div
             id="mobile-nav"
@@ -118,7 +118,7 @@ export default function Nav() {
               <Link
                 href="/signup"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center w-[142px] h-[41px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px]"
+                className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px]"
               >
                 Start free →
               </Link>
