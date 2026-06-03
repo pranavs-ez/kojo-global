@@ -1,68 +1,107 @@
 import Link from 'next/link'
-import { FOOTER_LINKS } from '@/data/navigation'
-import Divider from '@/components/atoms/Divider'
+
+const COLUMNS = [
+  {
+    header: 'PRODUCT',
+    links: [
+      { label: 'How it works', href: '/how-it-works' },
+      { label: 'Pricing',      href: '/pricing' },
+      { label: 'Security',     href: '/security' },
+      { label: 'Brief wizard', href: '/signup' },
+    ],
+  },
+  {
+    header: 'SERVICES',
+    links: [
+      { label: 'Content & Copy',          href: '/services/content-and-copy' },
+      { label: 'Research & Intelligence', href: '/services/research' },
+      { label: 'Presentations',           href: '/services/presentations' },
+      { label: 'Design',                  href: '/services/design' },
+      { label: 'HR & Legal',              href: '/services/hr-and-legal' },
+      { label: 'Language',                href: '/services/language' },
+    ],
+  },
+  {
+    header: 'COMPANY',
+    links: [
+      { label: 'About',        href: '/about' },
+      { label: 'Blog',         href: '/blog' },
+      { label: 'Case studies', href: '/case-studies' },
+      { label: 'Glossary',     href: '/glossary' },
+      { label: 'FAQ',          href: '/faq' },
+    ],
+  },
+  {
+    header: 'FOR YOU',
+    links: [
+      { label: 'For founders',        href: '/for/founders' },
+      { label: 'For CMOs',            href: '/for/cmos' },
+      { label: 'For chiefs of staff', href: '/for/chiefs-of-staff' },
+      { label: 'For COOs',            href: '/for/coos' },
+      { label: 'VC partners',         href: '/vc-partners' },
+    ],
+  },
+]
 
 export default function Footer() {
   return (
-    <footer
-      role="contentinfo"
-      className="bg-surface-footer"
-      aria-label="Footer navigation"
-    >
-      <Divider type="footer-rule" />
+    <footer role="contentinfo" className="bg-surface-footer w-full">
+
+      {/* Top border */}
+      <div className="h-px bg-kj-light/[0.08]" />
 
       {/* Footer body */}
-      <div className="kj-container py-16">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-0">
+      <div className="flex items-start px-[120px] py-16 w-full max-w-[1440px] mx-auto">
 
-          {/* Brand column */}
-          <div className="md:w-[260px] shrink-0">
-            <p className="font-mono text-[16px] text-kj-light mb-3">KOJO</p>
-            <p className="font-sans text-[13px] font-light text-kj-light/35 leading-relaxed max-w-[200px]">
-              Brief in. Business-ready output out. Every time.
-            </p>
-          </div>
-
-          {/* Spacer */}
-          <div className="hidden md:block flex-1" />
-
-          {/* Link columns */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-14">
-            {(Object.entries(FOOTER_LINKS) as [string, readonly { label: string; href: string }[]][]).map(
-              ([columnHeader, links]) => (
-                <div key={columnHeader}>
-                  <p className="font-mono text-[10px] text-kj-lime mb-5">
-                    {columnHeader}
-                  </p>
-                  <ul className="list-none m-0 p-0 flex flex-col gap-[14px]">
-                    {links.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="font-sans font-light text-[13px] text-kj-light/55 hover:text-kj-light/80 transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            )}
+        {/* Brand column */}
+        <div className="flex flex-col gap-[10px] w-[260px] shrink-0">
+          <p className="font-mono text-[16px] text-kj-light leading-normal">
+            KOJO
+          </p>
+          <div className="font-sans font-light text-[13px] text-kj-light opacity-35 leading-[1.6]">
+            <p>Expert AI. Human verified.</p>
+            <p>Business-ready.</p>
           </div>
         </div>
+
+        {/* Spacer — pushes columns to the right */}
+        <div className="flex-1 min-w-0" />
+
+        {/* Link columns */}
+        {COLUMNS.map((col, i) => (
+          <>
+            {i > 0 && <div key={`gap-${i}`} className="w-14 shrink-0" />}
+            <div key={col.header} className="flex flex-col gap-[14px] shrink-0">
+              <p className="font-mono text-[10px] text-kj-lime leading-normal">
+                {col.header}
+              </p>
+              {col.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-sans font-light text-[13px] text-kj-light opacity-55 hover:opacity-80 transition-opacity whitespace-nowrap"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </>
+        ))}
       </div>
 
+      {/* Bottom rule */}
+      <div className="h-px bg-kj-light/[0.08] mx-0" />
+
       {/* Legal bar */}
-      <Divider type="footer-rule" />
-      <div className="kj-container py-5">
-        <p className="font-sans text-[11px] text-kj-light">
-          © {new Date().getFullYear()} Kojo. All rights reserved. Backed by EZ Works.
+      <div className="flex flex-col gap-1 px-[120px] py-5 w-full max-w-[1440px] mx-auto">
+        <p className="font-sans text-[11px] text-kj-light leading-normal whitespace-nowrap">
+          © {new Date().getFullYear()} Kojo. All rights reserved. · Privacy policy · Terms of service · Cookie settings
         </p>
-        <p className="font-sans text-[11px] text-kj-light mt-1">
-          ISO 27001:2022 certified · Privacy Policy · Terms of Service
+        <p className="font-sans text-[11px] text-kj-light opacity-35 leading-normal whitespace-nowrap">
+          ISO 27001:2022 certified. Your data is never used to train AI models without your consent.
         </p>
       </div>
+
     </footer>
   )
 }
