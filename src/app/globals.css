@@ -1,26 +1,206 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Kojo Design System — Tailwind v4 Theme ─────────────────────────────── */
+
+@theme {
+  /* Brand colours */
+  --color-kj-primary:    #A448FA;
+  --color-kj-lime:       #DEFF00;
+  --color-kj-slate:      #505060;
+  --color-kj-dark:       #1e1e1e;
+  --color-kj-light:      #f8f8f2;
+
+  /* Semantic colours */
+  --color-kj-success:    #16A34A;
+  --color-kj-danger:     #DC2626;
+  --color-kj-warning:    #FF973D;
+
+  /* Section surface backgrounds */
+  --color-surface-hero:        #1e1e1e;
+  --color-surface-recognition: #212121;
+  --color-surface-process:     #181818;
+  --color-surface-standard:    #1e1e1e;
+  --color-surface-social:      #212121;
+  --color-surface-faq:         #181818;
+  --color-surface-cta:         #121212;
+  --color-surface-footer:      #121212;
+  --color-surface-glass-bg:    #1a0a2e;
+  --color-surface-ticker:      #191915;
+  --color-surface-card:        #232323;
+
+  /* Fonts */
+  --font-sans: 'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Border radii — sharp, precision factory aesthetic */
+  --radius:    2px;
+  --radius-sm: 1.25px;
+  --radius-lg: 3.25px;
+
+  /* Shadows */
+  --shadow-card:       0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-card-hover: 0 12px 32px rgba(0,0,0,0.18);
+  --shadow-nav:        0 8px 16px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.18);
+  --shadow-focus:      0 0 0 2px rgba(107, 63, 212, 0.22);
+  --shadow-cta-hover:  0 4px 16px rgba(164, 72, 250, 0.35);
+  --shadow-glass:      0 20px 48px rgba(0,0,0,0.35);
+
+  /* Durations */
+  --duration-fast:     200ms;
+  --duration-medium:   300ms;
+  --duration-entrance: 400ms;
+
+  /* Easing */
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Keyframe Animations ────────────────────────────────────────────────── */
+
+@keyframes kj-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes kj-ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes kj-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blobDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(4%, 6%) scale(1.06); }
+  66%  { transform: translate(-3%, 3%) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #1e1e1e;
+  color: #f8f8f2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: #1e1e1e;
+  color: #f8f8f2;
+  min-height: 100dvh;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #DEFF00;
+  color: #1e1e1e;
+}
+
+/* Focus ring — all interactive elements */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* ─── Scroll-entrance utility ────────────────────────────────────────────── */
+
+.kj-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-entrance) ease,
+              transform var(--duration-entrance) ease;
+}
+
+.kj-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Section structure ──────────────────────────────────────────────────── */
+
+.kj-section {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+@media (max-width: 768px) {
+  .kj-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+.kj-section-border {
+  border-top: 1px solid rgba(248, 248, 242, 0.08);
+}
+
+/* ─── Container ──────────────────────────────────────────────────────────── */
+
+.kj-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+@media (max-width: 1280px) {
+  .kj-container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .kj-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .kj-enter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Skip link ──────────────────────────────────────────────────────────── */
+
+.kj-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 8px 16px;
+  background: #DEFF00;
+  color: #1e1e1e;
+  font-weight: 600;
+  z-index: 9999;
+}
+
+.kj-skip-link:focus {
+  top: 0;
 }
