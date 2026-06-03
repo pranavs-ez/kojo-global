@@ -118,9 +118,9 @@ export default function Nav() {
               <Link
                 href="/signup"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center gap-1.5 justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px]"
+                className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"
               >
-                Start free <ArrowRight size={12} strokeWidth={2} />
+                Start free →
               </Link>
             </div>
           </div>
