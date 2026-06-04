@@ -88,7 +88,7 @@ export default function HiwPipelineSection() {
                   </p>
                   <p
                     className="font-sans font-light whitespace-pre-line"
-                    style={{ fontSize: '14px', lineHeight: '1.7', color: 'rgba(248,248,242,0.55)', maxWidth: '760px' }}
+                    style={{ fontSize: '14px', lineHeight: '1.7', color: 'rgba(248,248,242,0.55)' }}
                   >
                     {step.body}
                   </p>

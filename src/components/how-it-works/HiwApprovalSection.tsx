@@ -10,94 +10,66 @@ const ITEMS = [
   { label: 'Delivery window',   detail: 'standard and express options' },
 ]
 
-// Approval screen mockup — matches Figma F7 spec (520×440px)
+// Approval screen mockup — matches Figma F7 spec (480×420px)
 function ApprovalMockup() {
   return (
     <div
-      className="shrink-0 rounded-[12px] overflow-hidden"
+      className="shrink-0 rounded-[6px] overflow-hidden"
       style={{
         width: '100%',
         maxWidth: '480px',
-        background: '#F5F5F0',
-        border: '1px solid #DDD',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.10)',
+        background: '#1A1A1A',
       }}
     >
       {/* Header */}
       <div
         className="flex items-center justify-between"
-        style={{ background: '#1A1A1A', height: '48px', padding: '0 20px' }}
+        style={{ padding: '16px 20px 12px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
       >
-        <span className="font-sans" style={{ fontSize: '12px', color: '#F5F5F0', fontWeight: 600 }}>Brief approval</span>
-        <span className="font-mono" style={{ fontSize: '10px', color: '#888' }}>Step 2 of 2</span>
+        <span className="font-sans" style={{ fontSize: '13px', color: '#F5F5F0', fontWeight: 600 }}>Brief approval</span>
+        <span className="font-mono" style={{ fontSize: '10px', color: '#666' }}>Step 2 of 2</span>
       </div>
 
       {/* Scope row */}
-      <div style={{ padding: '14px 20px', background: '#FAFAFA', borderBottom: '1px solid #EEE' }}>
-        <span className="font-sans" style={{ fontSize: '12px', color: '#444' }}>
+      <div style={{ padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>
           Board memo · Financial communications · 1,200 words
         </span>
       </div>
 
       {/* Cost section */}
-      <div style={{ padding: '16px 20px', borderBottom: '1px solid #EEE' }}>
-        <div className="flex justify-between items-baseline mb-1">
-          <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>Kojo cost</span>
-          <span className="font-sans" style={{ fontSize: '20px', color: '#1A1A1A', fontWeight: 700 }}>60,000 Kojo</span>
+      <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="flex justify-between items-center mb-2">
+          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>Kojo cost</span>
+          <span className="font-mono" style={{ fontSize: '26px', color: '#C8FA64', fontWeight: 700, letterSpacing: '-0.02em' }}>60,000 Kojo</span>
         </div>
-        <div className="flex justify-between items-baseline mb-1">
-          <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>USD equivalent</span>
-          <span className="font-sans" style={{ fontSize: '16px', color: '#1A1A1A' }}>$60</span>
+        <div className="flex justify-between items-center">
+          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>Agency equivalent</span>
+          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.28)', textDecoration: 'line-through' }}>$2,000–$5,000 · 1–2 weeks</span>
         </div>
-        <div className="flex justify-between items-baseline">
-          <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>Agency equivalent</span>
-          <span className="font-sans" style={{ fontSize: '12px', color: '#AAA', textDecoration: 'line-through' }}>$2,000–$5,000 · 1–2 weeks</span>
-        </div>
-      </div>
-
-      {/* Expert role */}
-      <div style={{ padding: '12px 20px', background: '#F8F8F8', borderBottom: '1px solid #EEE' }}>
-        <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>Expert role: </span>
-        <span className="font-sans" style={{ fontSize: '12px', color: '#1A1A1A' }}>Financial communications writer</span>
       </div>
 
       {/* AI/human split */}
-      <div style={{ padding: '12px 20px', borderBottom: '1px solid #EEE' }}>
-        <p className="font-sans" style={{ fontSize: '11px', color: '#888', marginBottom: '6px' }}>AI / Human split</p>
-        <div style={{ height: '8px', borderRadius: '4px', overflow: 'hidden', display: 'flex', marginBottom: '4px' }}>
-          <div style={{ width: '65%', background: '#C8FA64' }} />
-          <div style={{ width: '35%', background: '#FF3CAC' }} />
-        </div>
-        <p className="font-sans" style={{ fontSize: '10px', color: '#888' }}>65% AI draft · 35% expert review</p>
+      <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <p className="font-sans" style={{ fontSize: '11px', color: '#C8FA64', marginBottom: '8px' }}>AI / Human split</p>
+        <div style={{ height: '6px', borderRadius: '3px', background: '#C8FA64', marginBottom: '6px' }} />
+        <p className="font-sans" style={{ fontSize: '10px', color: 'rgba(248,248,242,0.40)' }}>65% AI draft · 35% expert review</p>
       </div>
 
-      {/* Delivery options */}
-      <div style={{ padding: '12px 20px', borderBottom: '1px solid #EEE' }}>
-        <div className="flex gap-3">
-          <div style={{ background: '#1A1A1A', borderRadius: '6px', padding: '8px 12px', flex: 1 }}>
-            <div className="flex justify-between items-center">
-              <span className="font-sans" style={{ fontSize: '11px', color: '#F5F5F0' }}>Standard · 8 hours</span>
-              <span style={{ fontSize: '10px', color: '#C8FA64' }}>✓</span>
-            </div>
-          </div>
-          <div style={{ border: '1px solid #DDD', borderRadius: '6px', padding: '8px 12px', flex: 1 }}>
-            <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>Fast Track · 4 hrs · +$30</span>
-          </div>
+      {/* Delivery window */}
+      <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <p className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)', marginBottom: '8px' }}>Delivery window</p>
+        <div style={{ background: '#252525', borderRadius: '4px', padding: '10px 14px', display: 'inline-block' }}>
+          <span className="font-sans" style={{ fontSize: '12px', color: '#F5F5F0' }}>Standard · 8 hours</span>
         </div>
       </div>
 
-      {/* Assurance row */}
-      <div
-        className="flex justify-between items-center"
-        style={{ padding: '12px 20px', background: '#F0FAF0', borderBottom: '1px solid #E0EEE0' }}
-      >
-        <span className="font-sans" style={{ fontSize: '11px', color: '#2A7A2A', fontWeight: 600 }}>Delivery Assurance</span>
-        <span className="font-sans" style={{ fontSize: '11px', color: '#2A7A2A' }}>Included free — first project</span>
-      </div>
+      {/* Spacer */}
+      <div style={{ height: '24px' }} />
 
       {/* CTA */}
-      <div style={{ background: '#C8FA64', padding: '14px 20px', textAlign: 'center' }}>
-        <span className="font-sans" style={{ fontSize: '13px', color: '#1A1A1A', fontWeight: 700 }}>Approve and begin →</span>
+      <div style={{ background: '#C8FA64', padding: '16px 20px', textAlign: 'center' }}>
+        <span className="font-sans" style={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 700 }}>Approve and begin →</span>
       </div>
     </div>
   )

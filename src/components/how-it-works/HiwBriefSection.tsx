@@ -16,12 +16,11 @@ const QUESTIONS = [
 function BriefWizardMockup() {
   return (
     <div
-      className="shrink-0 rounded-[14px] overflow-hidden"
+      className="shrink-0 rounded-[6px] overflow-hidden"
       style={{
         width: '100%',
         maxWidth: '480px',
         background: '#1A1A1A',
-        border: '1px solid #333',
       }}
     >
       {/* Window chrome */}
@@ -40,10 +39,7 @@ function BriefWizardMockup() {
 
       {/* Progress bar row */}
       <div style={{ padding: '16px 20px 8px' }}>
-        <div className="flex justify-between mb-2">
-          <span className="font-mono" style={{ fontSize: '10px', color: '#888' }}>Question 3 of 8</span>
-          <span className="font-mono" style={{ fontSize: '10px', color: '#888' }}>3 min remaining</span>
-        </div>
+        <span className="font-mono" style={{ fontSize: '10px', color: '#888', display: 'block', marginBottom: '6px' }}>Question 3 of 8</span>
         <div style={{ height: '4px', background: '#333', borderRadius: '2px' }}>
           <div style={{ width: '37.5%', height: '100%', background: '#C8FA64', borderRadius: '2px' }} />
         </div>
@@ -132,27 +128,19 @@ export default function HiwBriefSection() {
             {/* Question list */}
             <div className="flex flex-col gap-0">
               {QUESTIONS.map((item, i) => (
-                <div key={i} className="flex gap-4 py-3" style={{ borderTop: '1px solid rgba(80,80,96,0.18)' }}>
-                  <span
-                    className="font-mono text-kj-lime shrink-0"
-                    style={{ fontSize: '12px', lineHeight: '1.6', minWidth: '20px' }}
+                <div key={i} className="py-3" style={{ borderTop: '1px solid rgba(80,80,96,0.18)' }}>
+                  <p
+                    className="font-sans font-semibold text-kj-light"
+                    style={{ fontSize: '14px', lineHeight: '1.5' }}
                   >
-                    {i + 1}.
-                  </span>
-                  <div>
-                    <span
-                      className="font-sans font-semibold text-kj-light"
-                      style={{ fontSize: '14px', lineHeight: '1.6' }}
-                    >
-                      {item.q}
-                    </span>
-                    <span
-                      className="font-sans font-light"
-                      style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(248,248,242,0.36)' }}
-                    >
-                      {' '}— {item.a}
-                    </span>
-                  </div>
+                    {i + 1}. {item.q}
+                  </p>
+                  <p
+                    className="font-sans font-light"
+                    style={{ fontSize: '14px', lineHeight: '1.5', color: 'rgba(248,248,242,0.36)' }}
+                  >
+                    — {item.a}
+                  </p>
                 </div>
               ))}
               <div style={{ height: '1px', background: 'rgba(80,80,96,0.18)' }} />
@@ -169,7 +157,7 @@ export default function HiwBriefSection() {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex lg:justify-end lg:flex-1 lg:pt-10">
+          <div className="flex lg:justify-end lg:flex-1">
             <BriefWizardMockup />
           </div>
 

@@ -48,7 +48,7 @@ export default function HiwFaqSection() {
         </h2>
 
         {/* Accordion */}
-        <div itemScope itemType="https://schema.org/FAQPage" style={{ maxWidth: '760px' }}>
+        <div itemScope itemType="https://schema.org/FAQPage">
           {FAQS.map((faq, i) => (
             <div key={i} itemScope itemType="https://schema.org/Question">
               <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
