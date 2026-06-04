@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HeroSection      from '@/components/home/HeroSection'
 import RecognitionSection from '@/components/home/RecognitionSection'
 import ProcessSection   from '@/components/home/ProcessSection'
+import OutputSection    from '@/components/home/OutputSection'
 import ServicesSection  from '@/components/home/ServicesSection'
 import SocialProofSection from '@/components/home/SocialProofSection'
 import ComparisonSection from '@/components/home/ComparisonSection'
@@ -39,6 +40,7 @@ export default function HomePage() {
       <HeroSection />
       <RecognitionSection />
       <ProcessSection />
+      <OutputSection />
       <ServicesSection />
       <SocialProofSection />
       <ComparisonSection />

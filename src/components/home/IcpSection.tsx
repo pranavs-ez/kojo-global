@@ -46,13 +46,18 @@ export default function IcpSection() {
           {ICP_CARDS.map((card) => (
             <div
               key={card.href}
-              className="flex flex-col justify-between gap-4 p-5 rounded-[2px] border-[0.3px] border-kj-light/[0.07] bg-kj-slate/[0.12] min-h-[220px]"
+              className="flex flex-col justify-between gap-6 p-5 rounded-[2px]"
+              style={{
+                background: 'rgba(80,80,96,0.12)',
+                border: '0.3px solid rgba(248,248,242,0.07)',
+                minHeight: '220px',
+              }}
             >
               <div className="flex flex-col gap-3">
-                <p className="font-sans font-semibold text-[16px] text-kj-light">
+                <p className="font-sans font-semibold text-[16px] text-kj-light leading-[1.3]">
                   {card.label}
                 </p>
-                <p className="font-sans font-light text-[13px] text-kj-light/55 leading-[1.6]">
+                <p className="font-sans font-light text-[13px] leading-[1.6]" style={{ color: 'rgba(248,248,242,0.55)' }}>
                   {card.desc}
                 </p>
               </div>

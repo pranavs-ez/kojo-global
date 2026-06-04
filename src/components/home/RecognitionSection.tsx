@@ -34,20 +34,20 @@ export default function RecognitionSection() {
           Sound familiar?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0 md:divide-x md:divide-kj-slate/20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {COLUMNS.map((col) => (
-            <div key={col.label} className="md:px-8 first:pl-0 last:pr-0 flex flex-col gap-4">
+            <div key={col.label} className="flex flex-col gap-4">
               <p className="font-sans font-semibold text-[16px] text-kj-light">
                 {col.label}
               </p>
-              <div className="w-full h-px bg-kj-slate/30" />
-              <p className="font-sans text-[14px] text-kj-light/55 leading-[1.7]">
+              <div className="w-full h-px" style={{ background: 'rgba(80,80,96,0.30)' }} />
+              <p className="font-sans text-[13px] leading-[1.7]" style={{ color: 'rgba(248,248,242,0.55)' }}>
                 {col.body}
               </p>
-              <p className="font-sans text-[14px] text-kj-light/80 leading-[1.6] italic mt-2">
+              <p className="font-sans text-[13px] leading-[1.6] italic mt-2" style={{ color: 'rgba(248,248,242,0.75)' }}>
                 {col.quote}
               </p>
-              <p className="font-sans text-[13px] text-kj-slate leading-normal">
+              <p className="font-sans text-[13px] leading-normal" style={{ color: '#505060' }}>
                 {col.attribution}
               </p>
             </div>

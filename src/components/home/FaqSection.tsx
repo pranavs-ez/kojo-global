@@ -10,7 +10,7 @@ const FAQS = [
   },
   {
     q: 'How is Kojo different from AI writing tools like Jasper or ChatGPT?',
-    a: 'AI writing tools produce a first draft and stop. That draft requires editing — 86% of marketers edit AI-generated content before publishing (AllAboutAI, 2025). Kojo uses AI to produce the first draft, then routes it to a subject matter expert who reviews, corrects, and approves the output against your brief before it reaches you. The expert review is the product — the AI is the infrastructure. You receive a verified, business-ready output, not a starting point.',
+    a: 'AI writing tools produce a first draft and stop. That draft requires editing — 86% of marketers edit AI-generated content before publishing (AllAboutAI, 2025). Kojo uses AI to produce the first draft, then routes it to a subject matter expert who reviews, corrects, and approves the output against your brief before it reaches you. The expert review is the product — the AI is the infrastructure.',
   },
   {
     q: 'How is Kojo different from a freelance marketplace?',
@@ -22,16 +22,16 @@ const FAQS = [
   },
   {
     q: 'How much does a typical brief cost?',
-    a: 'Kojo is priced in Kojo credits: 1,000 Kojo = $1. A standard blog post starts at 40,000 Kojo ($40). A press release starts at 40,000 Kojo ($40). A three-competitor competitive snapshot starts at 95,000 Kojo ($95). A full competitive landscape starts at 250,000 Kojo ($250). The actual cost is calculated in real time as you brief — you see the full estimate, including the agency equivalent, before approving anything.',
+    a: 'Kojo is priced in Kojo credits: 1,000 Kojo = $1. A standard blog post starts at 40,000 Kojo ($40). A press release starts at 40,000 Kojo ($40). A three-competitor competitive snapshot starts at 95,000 Kojo ($95). A full competitive landscape starts at 250,000 Kojo ($250). The actual cost is calculated in real time as you brief — you see the full estimate before approving anything.',
   },
   {
     q: 'Is my data secure?',
-    a: 'Kojo is ISO 27001:2022 certified. Your data is never used to train AI models without your explicit written consent. Deliverable content is encrypted at rest and in transit. Brief data is isolated per client — no cross-contamination between accounts. Expert access to brief content is need-to-know only, logged and audited. Data residency options are available for EU and UK clients.',
+    a: 'Kojo is ISO 27001:2022 certified. Your data is never used to train AI models without your explicit written consent. Deliverable content is encrypted at rest and in transit. Brief data is isolated per client — no cross-contamination between accounts. Expert access to brief content is need-to-know only, logged and audited.',
   },
 ]
 
 export default function FaqSection() {
-  const [open, setOpen] = useState<number | null>(0)
+  const [open, setOpen] = useState<number | null>(null)
 
   return (
     <section
@@ -47,25 +47,18 @@ export default function FaqSection() {
           Common questions
         </h2>
 
-        <div
-          className="flex flex-col"
-          itemScope
-          itemType="https://schema.org/FAQPage"
-        >
+        <div itemScope itemType="https://schema.org/FAQPage">
           {FAQS.map((faq, i) => (
-            <div
-              key={i}
-              itemScope
-              itemType="https://schema.org/Question"
-            >
+            <div key={i} itemScope itemType="https://schema.org/Question">
               {/* Divider */}
-              <div className="h-px bg-kj-slate/30" />
+              <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
 
+              {/* Question button */}
               <button
                 className="w-full flex items-start justify-between gap-6 py-[27px] text-left group"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
-                aria-controls={`faq-answer-${i}`}
+                aria-controls={`faq-${i}`}
               >
                 <span
                   className="font-sans font-semibold text-[15px] text-kj-light leading-[1.5] flex-1"
@@ -73,33 +66,35 @@ export default function FaqSection() {
                 >
                   {faq.q}
                 </span>
+                {/* + / - toggle */}
                 <span
-                  className="font-mono text-[14px] text-kj-lime/70 shrink-0 mt-0.5 transition-transform duration-200"
-                  style={{ transform: open === i ? 'rotate(45deg)' : 'none' }}
+                  className="font-mono text-[14px] shrink-0 mt-0.5 select-none transition-all duration-200"
+                  style={{ color: 'rgba(222,255,0,0.70)' }}
                   aria-hidden="true"
                 >
-                  +
+                  {open === i ? '−' : '+'}
                 </span>
               </button>
 
-              {open === i && (
-                <div
-                  id={`faq-answer-${i}`}
-                  className="pb-6"
-                  itemScope
-                  itemType="https://schema.org/Answer"
+              {/* Answer — smooth expand/collapse */}
+              <div
+                id={`faq-${i}`}
+                className="overflow-hidden transition-all duration-300 ease-in-out"
+                style={{ maxHeight: open === i ? '400px' : '0px' }}
+                itemScope
+                itemType="https://schema.org/Answer"
+              >
+                <p
+                  className="font-sans font-light text-[13px] leading-[1.6] pb-6 max-w-[840px]"
+                  style={{ color: 'rgba(248,248,242,0.60)' }}
+                  itemProp="text"
                 >
-                  <p
-                    className="font-sans font-light text-[13px] text-kj-light/60 leading-[1.6] max-w-[840px]"
-                    itemProp="text"
-                  >
-                    {faq.a}
-                  </p>
-                </div>
-              )}
+                  {faq.a}
+                </p>
+              </div>
             </div>
           ))}
-          <div className="h-px bg-kj-slate/30" />
+          <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
         </div>
 
         <Link
