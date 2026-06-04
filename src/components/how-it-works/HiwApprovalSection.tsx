@@ -81,27 +81,26 @@ export default function HiwApprovalSection() {
       aria-labelledby="hiw-approval-heading"
     >
       <div className="kj-container">
+
+        {/* Eyebrow + H2 — full width above the two-column layout */}
+        <p
+          className="font-mono font-normal text-kj-lime uppercase mb-4"
+          style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}
+        >
+          TRANSPARENCY
+        </p>
+        <h2
+          id="hiw-approval-heading"
+          className="font-sans font-normal text-kj-light mb-10"
+          style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}
+        >
+          You approve before work begins. You always know the cost.
+        </h2>
+
         <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16">
 
           {/* Left — text */}
           <div className="flex-1 lg:max-w-[520px]">
-
-            {/* Eyebrow */}
-            <p
-              className="font-mono font-normal text-kj-lime uppercase mb-4"
-              style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}
-            >
-              TRANSPARENCY
-            </p>
-
-            {/* H2 */}
-            <h2
-              id="hiw-approval-heading"
-              className="font-sans font-normal text-kj-light mb-6"
-              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}
-            >
-              You approve before work begins. You always know the cost.
-            </h2>
 
             {/* Lead */}
             <p
@@ -158,7 +157,7 @@ export default function HiwApprovalSection() {
           </div>
 
           {/* Right — mockup */}
-          <div className="flex lg:justify-end lg:flex-1 lg:pt-10">
+          <div className="flex lg:justify-end lg:flex-1 lg:pt-8">
             <ApprovalMockup />
           </div>
 
