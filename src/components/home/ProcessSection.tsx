@@ -2,7 +2,6 @@
 // Figma nodes 167:2390–167:2413 + Sankey 184:5214
 // Background: #181818
 
-import Image from 'next/image'
 import Link from 'next/link'
 
 const STEPS = [
@@ -149,17 +148,15 @@ export default function ProcessSection() {
         </div>
 
         {/* ── Sankey diagram ──────────────────────────────────────────────── */}
-        {/* Node 184:5214 — user will provide SVG; using PNG export for now  */}
-        {/* Switch src to "/images/sankey/sankey.svg" once SVG is dropped in */}
+        {/* Node 184:5214 — SVG for crisp rendering at all screen sizes */}
         <div className="w-full overflow-x-auto mb-10">
-          <Image
-            src="/images/sankey/sankey-full.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/sankey/sankey.svg"
             alt="Flow: Brief → AI Processing → Human Expert Review → Finished Deliverable"
             width={1224}
             height={210}
-            className="block"
-            style={{ maxWidth: '100%', height: 'auto' }}
-            priority
+            style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
           />
         </div>
 
