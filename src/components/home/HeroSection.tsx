@@ -97,8 +97,7 @@ export default function HeroSection() {
               {/* Primary — bg #DEFF00, Mono Medium 14px, px-[32px] py-[14px] */}
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center rounded-[2px] font-mono font-medium text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
-                style={{ fontSize: '14px', lineHeight: '1.4', paddingLeft: '32px', paddingRight: '32px', paddingTop: '14px', paddingBottom: '14px' }}
+                className="inline-flex items-center justify-center rounded-[2px] font-mono font-medium text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap text-[12px] sm:text-[14px] px-4 sm:px-8 py-[14px]"
               >
                 Start free — 100,000 Kojo on us →
               </Link>

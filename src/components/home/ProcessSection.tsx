@@ -36,7 +36,7 @@ const STEPS = [
   },
 ]
 
-// Horizontal connector between process cards
+// Horizontal connector between process cards (desktop)
 // Figma 612:4731/4732: 74×2px line + 8×7px dot, color rgba(222,255,0,0.75)
 function ProcessConnector() {
   return (
@@ -44,16 +44,26 @@ function ProcessConnector() {
       className="hidden md:flex items-center shrink-0"
       style={{ width: '79px', alignSelf: 'stretch' }}
     >
-      <div style={{ position: 'relative', width: '74px', height: '2px', background: 'rgba(222,255,0,0.75)' }}>
+      <div style={{ position: 'relative', width: '79px', height: '2px', background: 'rgba(222,255,0,0.75)' }}>
         <div style={{
           position: 'absolute',
           width: '8px',
           height: '7px',
           background: '#DEFF00',
-          left: '66px',
+          left: '71px',
           top: '-2.5px',
         }} />
       </div>
+    </div>
+  )
+}
+
+// Vertical connector between process cards (mobile)
+function MobileConnector() {
+  return (
+    <div className="flex md:hidden flex-col items-center shrink-0" style={{ height: '33px' }} aria-hidden="true">
+      <div style={{ width: '2px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
+      <div style={{ width: '8px', height: '7px', background: '#DEFF00', marginTop: '-2px' }} />
     </div>
   )
 }
@@ -90,11 +100,11 @@ export default function ProcessSection() {
         {/* Mobile: stacked, full-width                                        */}
         <div className="flex flex-col md:flex-row md:items-stretch mb-12">
           {STEPS.map((step, i) => (
-            <div key={step.num} className="flex md:contents">
+            <div key={step.num} className="flex flex-col md:contents">
 
               {/* Card — 240×280px fixed on desktop */}
               <div
-                className="relative w-full md:w-[240px] rounded-[2px] overflow-hidden shrink-0 mb-4 md:mb-0"
+                className="relative w-full md:w-[240px] rounded-[2px] overflow-hidden shrink-0"
                 style={{
                   height: '280px',
                   background: 'rgba(80,80,96,0.12)',
@@ -142,8 +152,11 @@ export default function ProcessSection() {
                 </p>
               </div>
 
-              {/* Horizontal connector (desktop only) */}
+              {/* Desktop horizontal connector */}
               {i < STEPS.length - 1 && <ProcessConnector />}
+
+              {/* Mobile vertical connector */}
+              {i < STEPS.length - 1 && <MobileConnector />}
             </div>
           ))}
         </div>

@@ -18,7 +18,7 @@ export default function FinalCtaSection() {
         <h2
           id="final-cta-heading"
           className="font-sans font-normal text-kj-light text-center"
-          style={{ fontSize: '48px', lineHeight: '1.15', letterSpacing: '-0.02em' }}
+          style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em' }}
         >
           Your next deliverable<CaretMotif />
           <br />Brief it today.
