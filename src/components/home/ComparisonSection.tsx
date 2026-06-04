@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const ROWS = [
   { label: 'First output',     kojo: 'Hours',             freelancer: 'Days–weeks',            agency: '2–4 weeks',           ai: 'Minutes (needs editing)' },
   { label: 'Price vs. agency', kojo: '35–40% lower',      freelancer: 'Variable',              agency: 'Baseline',            ai: 'Cheap (needs editing)' },
@@ -68,6 +70,17 @@ export default function ComparisonSection() {
         <p className="mt-5 font-sans text-[11px] italic" style={{ color: 'rgba(248,248,242,0.20)' }}>
           No competitor brand names appear in Kojo copy. Categories only.
         </p>
+
+        {/* CTA — Figma F7 Start Free CTA (601:86): Mono SemiBold 15px, lime bg, centred */}
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/signup"
+            className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-[15px] text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"
+            style={{ paddingLeft: '32px', paddingRight: '32px', paddingTop: '15px', paddingBottom: '15px' }}
+          >
+            Start free →
+          </Link>
+        </div>
       </div>
     </section>
   )

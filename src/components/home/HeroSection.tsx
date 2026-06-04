@@ -32,31 +32,38 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden" style={{ background: '#1e1e1e' }} aria-label="Hero">
 
-      {/* Dot grid — transparent at centre, visible at edges */}
+      {/* Dot grid — uniform across entire hero, no mask (matches Figma bg-texture) */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           backgroundImage: 'radial-gradient(circle, rgba(80,80,96,0.45) 1.5px, transparent 1.5px)',
           backgroundSize: '24px 24px',
-          maskImage: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 30%, rgba(0,0,0,0.4) 55%, black 85%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 90% 80% at 50% 50%, transparent 30%, rgba(0,0,0,0.4) 55%, black 85%)',
         }}
       />
 
-      {/* Hero frame — exactly 900px, matches Figma bg-texture height */}
-      <div className="relative z-10 kj-container h-[900px] flex flex-col justify-center">
+      {/* Gradient overlay — darkens centre, transparent at edges (matches Figma hero-gradient-overlay) */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: 'radial-gradient(ellipse 72% 58% at 50% 50%, rgba(30,30,30,0.80) 0%, rgba(30,30,30,0.40) 50%, rgba(30,30,30,0) 100%)',
+        }}
+      />
+
+      {/* Hero frame — 900px on desktop, natural height on mobile */}
+      <div className="relative z-10 kj-container py-24 lg:py-0 lg:h-[900px] flex flex-col justify-center">
         <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0">
 
           {/* Left column — copy */}
           <div className="flex flex-col items-start lg:w-[580px] shrink-0">
 
-            {/* Eyebrow — Label/Eyebrow style: Mono Regular 10px, Lime, 3px tracking, uppercase */}
+            {/* Eyebrow — Figma: Label/Eyebrow "EXPERT AI" */}
             <p
               className="font-mono font-normal text-kj-lime uppercase mb-6"
-              style={{ fontSize: '10px', letterSpacing: '3px' }}
+              style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}
             >
-              AI · HUMAN · DONE
+              EXPERT AI
             </p>
 
             <h1
@@ -77,11 +84,11 @@ export default function HeroSection() {
               AI drafts. Human experts verify. Business-ready output in hours, not weeks.
             </p>
 
-            {/* CTAs — Primary + Secondary with 12px gap matching Figma */}
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start gap-3 mt-8">
               <Link
                 href="/signup"
-                className="inline-flex items-center gap-2 px-6 h-[46px] bg-kj-lime text-kj-dark font-mono font-medium text-[14px] rounded-[2px] hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-8 h-[46px] bg-kj-lime text-kj-dark font-mono font-medium text-[14px] rounded-[2px] hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
               >
                 Start free — 100,000 Kojo on us →
               </Link>
@@ -95,17 +102,15 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right column — flow diagram (from System Foundations) */}
+          {/* Right column — FlowCards from System Foundations */}
           <div className="hidden lg:flex flex-1 justify-end items-center pl-12">
             <div className="flex flex-col items-center w-[396px] gap-0">
               <FlowCard type="input" />
-              {/* Connector */}
               <div className="flex flex-col items-center">
                 <div className="w-px h-7" style={{ background: 'rgba(222,255,0,0.75)' }} />
                 <div className="w-[7px] h-[7px] rounded-[1px]" style={{ background: 'rgba(222,255,0,0.75)' }} />
               </div>
               <FlowCard type="expert" />
-              {/* Connector */}
               <div className="flex flex-col items-center">
                 <div className="w-px h-7" style={{ background: 'rgba(222,255,0,0.75)' }} />
                 <div className="w-[7px] h-[7px] rounded-[1px]" style={{ background: 'rgba(222,255,0,0.75)' }} />
@@ -116,11 +121,11 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Status ticker — 32px, #191915 */}
+      {/* Status Ticker — bg #1e1e1e, text rgba(222,255,0,0.36) per Figma */}
       <div
         className="relative z-10 overflow-hidden"
         style={{
-          background: '#191915',
+          background: '#1e1e1e',
           borderTop: '1px solid rgba(248,248,242,0.06)',
           height: '32px',
           display: 'flex',
@@ -135,14 +140,14 @@ export default function HeroSection() {
         >
           <span
             className="font-mono shrink-0"
-            style={{ fontSize: '11px', color: 'rgba(222,255,0,0.70)', padding: '0 32px' }}
+            style={{ fontSize: '11px', color: 'rgba(222,255,0,0.36)', padding: '0 32px' }}
           >
             {tickerContent}{tickerContent}
           </span>
         </div>
       </div>
 
-      {/* Metrics bar — 96px, #212121 */}
+      {/* Metrics bar — #212121 */}
       <div
         className="relative z-10"
         style={{

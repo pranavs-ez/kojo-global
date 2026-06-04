@@ -69,82 +69,17 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* Sankey — exact Figma graphic using saved connector images */}
-        {/* Container is 1200px wide × 210px tall, matching Figma dimensions */}
+        {/* Sankey — direct Figma export (node 184:5214), 1224×210px */}
         <div className="w-full overflow-x-auto mb-10">
-          <div
-            className="relative"
-            style={{ width: '1200px', height: '210px' }}
-            aria-label="Process flow: Brief → AI Processing → Human Expert Review → Finished Deliverable"
-            role="img"
-          >
-            {/* Connector curve 1a: brief top → AI (264×100, starts x=16) */}
-            <Image
-              src="/images/sankey/conn-1a.png"
-              alt=""
-              width={264}
-              height={100}
-              className="absolute"
-              style={{ left: 16, top: 0 }}
-              aria-hidden="true"
-            />
-            {/* Connector curve 1b: brief bottom → human (554×110, starts x=16, y=100) */}
-            <Image
-              src="/images/sankey/conn-1b.png"
-              alt=""
-              width={554}
-              height={110}
-              className="absolute"
-              style={{ left: 16, top: 100 }}
-              aria-hidden="true"
-            />
-            {/* Connector curve 2: AI → human (274×100, starts x=296) */}
-            <Image
-              src="/images/sankey/conn-2.png"
-              alt=""
-              width={274}
-              height={100}
-              className="absolute"
-              style={{ left: 296, top: 0 }}
-              aria-hidden="true"
-            />
-            {/* Connector 3: human → finished (gradient fade) */}
-            <div
-              className="absolute rounded-[2px]"
-              style={{
-                left: 586,
-                top: 20,
-                width: 344,
-                height: 160,
-                background: 'linear-gradient(to right, rgba(164,72,250,0.35), rgba(30,30,30,0.35))',
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Vertical bars — the 4 nodes */}
-            {/* Brief node */}
-            <div className="absolute rounded-[2px]" style={{ left: 0, top: 20, width: 16, height: 160, background: '#30303c', border: '1px solid rgba(80,80,96,0.6)' }} />
-            {/* AI node */}
-            <div className="absolute rounded-[2px]" style={{ left: 280, top: 0, width: 16, height: 80, background: '#DEFF00' }} />
-            {/* Human node */}
-            <div className="absolute rounded-[2px]" style={{ left: 570, top: 20, width: 16, height: 160, background: '#A448FA' }} />
-            {/* Finished node */}
-            <div className="absolute rounded-[2px]" style={{ left: 930, top: 20, width: 16, height: 160, background: '#1e1e1e', border: '1px solid rgba(248,248,242,0.22)' }} />
-
-            {/* Labels */}
-            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 24, top: 74, letterSpacing: '3px' }}>BRIEF</p>
-            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 304, top: 34, letterSpacing: '3px' }}>AI PROCESSING</p>
-            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 594, top: 94, letterSpacing: '3px' }}>HUMAN EXPERT REVIEW</p>
-            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 954, top: 78, letterSpacing: '3px' }}>FINISHED DELIVERABLE</p>
-
-            {/* Annotations */}
-            <p className="absolute font-mono text-[9px]" style={{ left: 954, top: 108, color: 'rgba(248,248,242,0.4)' }}>
-              Kojo: 4–24 hrs · Agency equiv: 2–4 wks
-            </p>
-            <p className="absolute font-mono text-[9px]" style={{ left: 954, top: 123, color: 'rgba(248,248,242,0.4)' }}>
-              Kojo: from $40 · Agency: from $1,200
-            </p>
-          </div>
+          <Image
+            src="/images/sankey/sankey-full.png"
+            alt="Process flow: Brief → AI Processing → Human Expert Review → Finished Deliverable"
+            width={1224}
+            height={210}
+            className="block"
+            style={{ maxWidth: '100%', height: 'auto' }}
+            priority
+          />
         </div>
 
         {/* Note + CTA */}

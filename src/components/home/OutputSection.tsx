@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 const TABS = [
   {
@@ -54,7 +55,7 @@ export default function OutputSection() {
         </p>
         <h2
           id="output-heading"
-          className="font-sans font-regular text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-3"
+          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-3"
         >
           What business-ready looks like
         </h2>
@@ -82,10 +83,10 @@ export default function OutputSection() {
           ))}
         </div>
 
-        {/* Content: left = tab detail + prices, right = document preview */}
+        {/* Content: left = prices, right = document preview */}
         <div className="flex flex-col lg:flex-row gap-8">
 
-          {/* Left — selected tab content */}
+          {/* Left — selected tab + prices */}
           <div className="flex flex-col gap-6 lg:flex-1">
             <div>
               <p className="font-sans font-semibold text-[20px] text-kj-light mb-3">
@@ -98,72 +99,117 @@ export default function OutputSection() {
 
             {/* Price comparison — Agency first, always */}
             <div className="flex flex-col sm:flex-row gap-3">
-              {/* Agency */}
+              {/* Agency — Figma 167:2565: rgba(80,80,96,0.1) bg, 0.5px rgba(80,80,96,0.25) border */}
               <div
                 className="flex flex-col gap-2 p-5 rounded-[2px] flex-1"
-                style={{ background: '#232323', border: '0.3px solid rgba(248,248,242,0.07)' }}
+                style={{
+                  background: 'rgba(80,80,96,0.10)',
+                  border: '0.5px solid rgba(80,80,96,0.25)',
+                }}
               >
-                <p className="font-mono text-[9px] tracking-[2px] uppercase" style={{ color: 'rgba(80,80,96,0.7)' }}>
+                <p className="font-mono text-[9px] tracking-[2px] uppercase" style={{ color: 'rgba(248,248,242,0.35)' }}>
                   AGENCY EQUIVALENT
                 </p>
                 <p className="font-mono font-medium text-[22px] text-kj-light leading-none">
                   {tab.agencyPrice}
                 </p>
-                <p className="font-sans text-[12px]" style={{ color: 'rgba(248,248,242,0.40)' }}>
+                <p className="font-sans font-light text-[12px] leading-[1.6]" style={{ color: 'rgba(248,248,242,0.35)' }}>
                   {tab.agencyTime}
                 </p>
               </div>
-              {/* Kojo */}
+
+              {/* Kojo — Figma 167:2569: rgba(222,255,0,0.06) bg, rgba(222,255,0,0.6) border, LIME price */}
               <div
                 className="flex flex-col gap-2 p-5 rounded-[2px] flex-1"
                 style={{
-                  background: 'rgba(222,255,0,0.05)',
-                  border: '0.3px solid rgba(222,255,0,0.25)',
-                  borderTop: '3px solid #DEFF00',
+                  background: 'rgba(222,255,0,0.06)',
+                  border: '1px solid rgba(222,255,0,0.60)',
                 }}
               >
                 <p className="font-mono text-[9px] tracking-[2px] uppercase text-kj-lime">
                   KOJO
                 </p>
-                <p className="font-mono font-medium text-[22px] text-kj-light leading-none">
+                {/* Price value is lime per Figma 167:2571 */}
+                <p className="font-mono font-medium text-[22px] text-kj-lime leading-none">
                   {tab.kojoPrice}
                 </p>
-                <p className="font-sans text-[12px]" style={{ color: 'rgba(248,248,242,0.40)' }}>
+                <p className="font-sans font-light text-[12px] leading-[1.6]" style={{ color: 'rgba(222,255,0,0.36)' }}>
                   {tab.kojoTime}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right — document preview */}
+          {/* Right — Document Preview (Figma 167:2573: exact recreation) */}
           <div
-            className="lg:w-[540px] shrink-0 rounded-[2px] flex items-center justify-center"
+            className="lg:w-[540px] shrink-0 rounded-[2px] relative overflow-hidden"
             style={{
               background: '#232323',
-              border: '0.3px solid rgba(248,248,242,0.07)',
-              minHeight: '320px',
+              border: '1px solid rgba(222,255,0,0.35)',
+              height: '320px',
             }}
           >
-            <div className="flex flex-col items-center gap-3 p-8">
-              {/* Mock document lines */}
-              <div className="w-full max-w-[400px] flex flex-col gap-3">
-                <div className="h-4 rounded-[1px] w-2/3" style={{ background: 'rgba(248,248,242,0.08)' }} />
-                <div className="h-2 rounded-[1px] w-full" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="h-2 rounded-[1px] w-5/6" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="h-2 rounded-[1px] w-full" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="mt-2 h-2 rounded-[1px] w-3/4" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="h-2 rounded-[1px] w-full" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="h-2 rounded-[1px] w-4/5" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="mt-2 h-2 rounded-[1px] w-full" style={{ background: 'rgba(248,248,242,0.05)' }} />
-                <div className="h-2 rounded-[1px] w-2/3" style={{ background: 'rgba(248,248,242,0.05)' }} />
-              </div>
-            </div>
+            {/* Header background */}
+            <div
+              className="absolute left-0 right-0 top-0"
+              style={{ height: '44px', background: 'rgba(222,255,0,0.06)' }}
+            />
+            {/* Title */}
+            <p className="absolute font-mono font-normal text-kj-lime text-[11px] leading-[1.4]" style={{ left: '19px', top: '15px' }}>
+              BOARD MEMO — Q2 2026
+            </p>
+            {/* Verified badge */}
+            <p className="absolute font-mono text-[9px]" style={{ right: '19px', top: '17px', color: 'rgba(222,255,0,0.36)' }}>
+              ✓ VERIFIED
+            </p>
+
+            {/* STRATEGIC PROGRESS */}
+            <p className="absolute font-mono text-[8px]" style={{ left: '19px', top: '59px', color: 'rgba(222,255,0,0.36)' }}>
+              STRATEGIC PROGRESS
+            </p>
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '75px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '89px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '103px', width: '200px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+
+            {/* FINANCIAL SUMMARY */}
+            <p className="absolute font-mono text-[8px]" style={{ left: '19px', top: '139px', color: 'rgba(222,255,0,0.36)' }}>
+              FINANCIAL SUMMARY
+            </p>
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '155px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '169px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '183px', width: '200px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+
+            {/* DECISIONS REQUIRED */}
+            <p className="absolute font-mono text-[8px]" style={{ left: '19px', top: '219px', color: 'rgba(222,255,0,0.36)' }}>
+              DECISIONS REQUIRED
+            </p>
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '235px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '249px', width: '460px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+            <div className="absolute rounded-[1px]" style={{ left: '19px', top: '263px', width: '200px', height: '6px', background: 'rgba(248,248,242,0.10)' }} />
+
+            {/* Footer divider + text */}
+            <div className="absolute left-0 right-0" style={{ top: '289px', height: '1px', background: 'rgba(248,248,242,0.08)' }} />
+            <p className="absolute font-mono text-[9px]" style={{ left: '19px', top: '299px', color: '#505060' }}>
+              Delivered via Kojo · SME reviewed · Business-ready
+            </p>
           </div>
         </div>
 
+        {/* Disclaimer */}
         <p className="mt-6 font-sans text-[12px]" style={{ color: 'rgba(248,248,242,0.30)' }}>
           Agency equivalent shown for comparison. Kojo estimates are calculated in real time as you brief — you see the full cost before approving anything.
         </p>
+
+        {/* CTA — Figma F4 Start Free CTA (600:85): Mono SemiBold 15px, lime bg */}
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/signup"
+            className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-[15px] text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"
+            style={{ paddingLeft: '32px', paddingRight: '32px', paddingTop: '15px', paddingBottom: '15px' }}
+          >
+            Start free →
+          </Link>
+        </div>
       </div>
     </section>
   )
