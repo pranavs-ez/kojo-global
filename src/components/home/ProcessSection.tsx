@@ -1,6 +1,7 @@
 // Process (S3) — "Brief in. Business-ready output out."
-// Figma nodes 167:2390–167:2413 + Sankey 184:5214
-// Background: #181818
+// Figma nodes 167:2391–167:2413 | Background: #181818
+// Cards: 240×280px fixed | Connectors: 74×2px horizontal line + 8×7px dot
+// Callout (599:85): "That's not a wrapper — that's a quality system."
 
 import Link from 'next/link'
 
@@ -10,7 +11,6 @@ const STEPS = [
     title: 'Brief',
     desc: 'Describe what you need. The guided brief wizard asks the right questions — audience, purpose, format, deadline, brand context.',
     tag: 'INPUT',
-    // Steps 01, 02, 04 have subtle border; step 03 has lime border
     highlight: false,
   },
   {
@@ -25,7 +25,6 @@ const STEPS = [
     title: 'Expert review',
     desc: 'A subject matter expert — matched by specialism — reviews, corrects, and approves every section before it leaves the system.',
     tag: 'SME VERIFIED',
-    // Step 03: lime border (the highlighted step)
     highlight: true,
   },
   {
@@ -37,6 +36,28 @@ const STEPS = [
   },
 ]
 
+// Horizontal connector between process cards
+// Figma 612:4731/4732: 74×2px line + 8×7px dot, color rgba(222,255,0,0.75)
+function ProcessConnector() {
+  return (
+    <div
+      className="hidden md:flex items-center shrink-0"
+      style={{ width: '79px', alignSelf: 'stretch' }}
+    >
+      <div style={{ position: 'relative', width: '74px', height: '2px', background: 'rgba(222,255,0,0.75)' }}>
+        <div style={{
+          position: 'absolute',
+          width: '8px',
+          height: '7px',
+          background: '#DEFF00',
+          left: '66px',
+          top: '-2.5px',
+        }} />
+      </div>
+    </div>
+  )
+}
+
 export default function ProcessSection() {
   return (
     <section
@@ -47,7 +68,7 @@ export default function ProcessSection() {
     >
       <div className="kj-container">
 
-        {/* Eyebrow — 199:4 "THE PROCESS" */}
+        {/* Eyebrow */}
         <p
           className="font-mono font-normal text-kj-lime uppercase mb-4"
           style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}
@@ -55,7 +76,7 @@ export default function ProcessSection() {
           THE PROCESS
         </p>
 
-        {/* H2 — 167:2390: Sans Regular 48px, tracking -0.02em */}
+        {/* H2 */}
         <h2
           id="process-heading"
           className="font-sans font-normal text-kj-light mb-12"
@@ -64,38 +85,31 @@ export default function ProcessSection() {
           Brief in. Business-ready output out.
         </h2>
 
-        {/* ── Step cards ──────────────────────────────────────────────────── */}
-        {/* 4 equal-width cards in a horizontal row, with → arrows between   */}
-        <div className="flex flex-col md:flex-row gap-2 md:gap-0 mb-10">
+        {/* ── Step cards row ──────────────────────────────────────────────── */}
+        {/* Desktop: 4 cards × 240px + 3 connectors × 79px = 1197px          */}
+        {/* Mobile: stacked, full-width                                        */}
+        <div className="flex flex-col md:flex-row md:items-stretch mb-12">
           {STEPS.map((step, i) => (
-            <div key={step.num} className="flex items-start flex-1">
+            <div key={step.num} className="flex md:contents">
 
-              {/* Card — 167:2391/2397/2403/2409                             */}
-              {/* bg rgba(80,80,96,0.12), border subtle or lime for step 03  */}
-              {/* Absolute positioning matches Figma pixel values             */}
+              {/* Card — 240×280px fixed on desktop */}
               <div
-                className="relative flex-1 rounded-[2px] overflow-hidden"
+                className="relative w-full md:w-[240px] rounded-[2px] overflow-hidden shrink-0 mb-4 md:mb-0"
                 style={{
+                  height: '280px',
                   background: 'rgba(80,80,96,0.12)',
                   border: `1px solid ${step.highlight ? '#DEFF00' : 'rgba(248,248,242,0.07)'}`,
-                  minHeight: '280px',
                 }}
               >
-                {/* Step number — Mono Light 28px, top=19px */}
+                {/* Step number — Mono Light 28px, top=19 */}
                 <p
                   className="absolute font-mono text-kj-lime"
-                  style={{
-                    fontWeight: 300,
-                    fontSize: '28px',
-                    lineHeight: '1.2',
-                    left: '19px',
-                    top: '19px',
-                  }}
+                  style={{ fontWeight: 300, fontSize: '28px', lineHeight: '1.2', left: '19px', top: '19px' }}
                 >
                   {step.num}
                 </p>
 
-                {/* Title — Sans SemiBold 16px, top=65px */}
+                {/* Title — Sans SemiBold 16px, top=65 */}
                 <p
                   className="absolute font-sans font-semibold text-kj-light"
                   style={{ fontSize: '16px', lineHeight: '1.2', left: '19px', top: '65px' }}
@@ -103,7 +117,7 @@ export default function ProcessSection() {
                   {step.title}
                 </p>
 
-                {/* Description — Sans Light 13px, top=95px, w=200px, h=50px (clips) */}
+                {/* Description — Sans Light 13px, top=95, w=200, h=50 clipped */}
                 <p
                   className="absolute font-sans font-light overflow-hidden"
                   style={{
@@ -119,38 +133,23 @@ export default function ProcessSection() {
                   {step.desc}
                 </p>
 
-                {/* Tag — Mono Regular 10px, top=251px, lime, tracking 3px */}
+                {/* Tag — Mono Regular 10px, top=251 */}
                 <p
                   className="absolute font-mono font-normal text-kj-lime uppercase"
-                  style={{
-                    fontSize: '10px',
-                    letterSpacing: '3px',
-                    lineHeight: '1.2',
-                    left: '19px',
-                    top: '251px',
-                  }}
+                  style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2', left: '19px', top: '251px' }}
                 >
                   {step.tag}
                 </p>
               </div>
 
-              {/* Visual connector between cards */}
-              {i < STEPS.length - 1 && (
-                <div className="hidden md:flex items-center justify-center shrink-0 self-stretch px-1">
-                  <div className="flex flex-col items-center gap-0">
-                    <div style={{ width: '1px', height: '18px', background: 'rgba(248,248,242,0.12)' }} />
-                    <div style={{ width: '5px', height: '5px', borderRadius: '1px', transform: 'rotate(45deg)', background: 'rgba(248,248,242,0.12)' }} />
-                    <div style={{ width: '1px', height: '18px', background: 'rgba(248,248,242,0.12)' }} />
-                  </div>
-                </div>
-              )}
+              {/* Horizontal connector (desktop only) */}
+              {i < STEPS.length - 1 && <ProcessConnector />}
             </div>
           ))}
         </div>
 
         {/* ── Sankey diagram ──────────────────────────────────────────────── */}
-        {/* Node 184:5214 — SVG for crisp rendering at all screen sizes */}
-        <div className="w-full overflow-x-auto mb-6">
+        <div className="w-full overflow-x-auto mb-[10px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/sankey/sankey.svg"
@@ -161,29 +160,13 @@ export default function ProcessSection() {
           />
         </div>
 
-        {/* ── Output type chips — 167:2421–2433 ───────────────────────────── */}
-        {/* Figma: bg rgba(80,80,96,0.12), border rgba(248,248,242,0.12)      */}
-        {/* text: Sans Regular 13px rgba(248,248,242,0.36), px-[15px] py-[9px] */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {['Board Reports', 'RFP Responses', 'Due Diligence', 'Executive Summaries', 'Product Requirements', 'Pitch Decks', 'Compliance Reports'].map((tag) => (
-            <div
-              key={tag}
-              className="rounded-[2px] overflow-hidden"
-              style={{
-                background: 'rgba(80,80,96,0.12)',
-                border: '1px solid rgba(248,248,242,0.12)',
-                padding: '9px 15px',
-              }}
-            >
-              <span
-                className="font-sans font-normal"
-                style={{ fontSize: '13px', color: 'rgba(248,248,242,0.36)' }}
-              >
-                {tag}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* ── Callout — 599:85: Sans Regular, full width, 26px tall ─────── */}
+        <p
+          className="font-sans font-normal text-kj-light mb-6"
+          style={{ fontSize: '15px', lineHeight: '1.6' }}
+        >
+          That's not a wrapper — that's a quality system.
+        </p>
 
         {/* CTA link */}
         <Link

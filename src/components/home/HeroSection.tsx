@@ -83,8 +83,9 @@ export default function HeroSection() {
             </h1>
 
             {/* Subtitle — Figma 167:2329: Regular 18px, rgba(248,248,242,0.36), leading 1.62 */}
+            {/* 148px gap from H1 bottom on desktop — aligns with Expert AI card bottom */}
             <p
-              className="font-sans text-[18px] mt-6 max-w-[480px]"
+              className="font-sans text-[18px] mt-8 lg:mt-[148px] max-w-[480px]"
               style={{ color: 'rgba(248,248,242,0.36)', lineHeight: '1.62' }}
             >
               AI drafts. Human experts verify. Business-ready output in hours, not weeks.
@@ -120,18 +121,19 @@ export default function HeroSection() {
 
               <FlowCard type="input" />
 
-              {/* Connector: lime vertical line + square diamond */}
-              <div className="flex flex-col items-center my-2" style={{ height: '32px', justifyContent: 'center' }}>
-                <div style={{ width: '1px', height: '20px', background: 'rgba(222,255,0,0.60)' }} />
-                <div style={{ width: '6px', height: '6px', borderRadius: '1px', background: 'rgba(222,255,0,0.60)' }} />
+              {/* Connector: 2px×28px vertical line + 8×7px dot, overlapping 2px = 33px total */}
+              {/* Figma 167:2351/2352: line rgba(222,255,0,0.75), dot #DEFF00 */}
+              <div className="flex flex-col items-center shrink-0" style={{ height: '33px' }}>
+                <div style={{ width: '2px', height: '28px', background: 'rgba(222,255,0,0.75)', flexShrink: 0 }} />
+                <div style={{ width: '8px', height: '7px', background: '#DEFF00', marginTop: '-2px', flexShrink: 0 }} />
               </div>
 
               <FlowCard type="expert" />
 
-              {/* Connector */}
-              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
-                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
-                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
+              {/* Connector: same pattern */}
+              <div className="flex flex-col items-center shrink-0" style={{ height: '33px' }}>
+                <div style={{ width: '2px', height: '28px', background: 'rgba(222,255,0,0.75)', flexShrink: 0 }} />
+                <div style={{ width: '8px', height: '7px', background: '#DEFF00', marginTop: '-2px', flexShrink: 0 }} />
               </div>
 
               <FlowCard type="output" />
