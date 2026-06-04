@@ -10,66 +10,64 @@ const ITEMS = [
   { label: 'Delivery window',   detail: 'standard and express options' },
 ]
 
-// Approval screen mockup — matches Figma F7 spec (480×420px)
+// Approval screen mockup — Figma F7 spec: 480×420, r:2, stroke #f8f8f1/0.5
+// Single dark canvas — no dividers, no light panels
 function ApprovalMockup() {
   return (
     <div
-      className="shrink-0 rounded-[6px] overflow-hidden"
+      className="shrink-0 overflow-hidden flex flex-col"
       style={{
         width: '100%',
         maxWidth: '480px',
-        background: '#1A1A1A',
+        background: '#1E1E1E',
+        border: '0.5px solid rgba(248,248,241,0.50)',
+        borderRadius: '2px',
       }}
     >
-      {/* Header */}
-      <div
-        className="flex items-center justify-between"
-        style={{ padding: '16px 20px 12px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
-      >
-        <span className="font-sans" style={{ fontSize: '13px', color: '#F5F5F0', fontWeight: 600 }}>Brief approval</span>
-        <span className="font-mono" style={{ fontSize: '10px', color: '#666' }}>Step 2 of 2</span>
-      </div>
+      {/* Content area */}
+      <div className="flex flex-col flex-1" style={{ padding: '20px 20px 24px', gap: '14px' }}>
 
-      {/* Scope row */}
-      <div style={{ padding: '12px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>
+        {/* Header row */}
+        <div className="flex justify-between items-baseline">
+          <span className="font-sans" style={{ fontSize: '12px', color: 'rgba(248,248,241,0.85)', fontWeight: 300 }}>Brief approval</span>
+          <span className="font-sans" style={{ fontSize: '12px', color: 'rgba(248,248,241,0.40)', fontWeight: 300 }}>Step 2 of 2</span>
+        </div>
+
+        {/* Scope */}
+        <p className="font-sans" style={{ fontSize: '12px', color: 'rgba(248,248,241,0.70)', fontWeight: 300 }}>
           Board memo · Financial communications · 1,200 words
-        </span>
-      </div>
+        </p>
 
-      {/* Cost section */}
-      <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="flex justify-between items-center mb-2">
-          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>Kojo cost</span>
-          <span className="font-mono" style={{ fontSize: '26px', color: '#C8FA64', fontWeight: 700, letterSpacing: '-0.02em' }}>60,000 Kojo</span>
+        {/* Cost */}
+        <div>
+          <div className="flex justify-between items-baseline mb-1">
+            <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,241,0.40)' }}>Kojo cost</span>
+            <span className="font-mono" style={{ fontSize: '28px', color: '#DDFF00', fontWeight: 500, letterSpacing: '-0.01em' }}>60,000 Kojo</span>
+          </div>
+          <div className="flex justify-between items-baseline">
+            <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,241,0.40)' }}>Agency equivalent</span>
+            <span className="font-sans" style={{ fontSize: '12px', color: 'rgba(248,248,241,0.50)', fontWeight: 300 }}>$2,000–$5,000 · 1–2 weeks</span>
+          </div>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>Agency equivalent</span>
-          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.28)', textDecoration: 'line-through' }}>$2,000–$5,000 · 1–2 weeks</span>
+
+        {/* AI / Human split */}
+        <div>
+          <p className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,241,0.40)', marginBottom: '6px' }}>AI / Human split</p>
+          <div style={{ height: '3px', background: '#DEFF00', borderRadius: '1px', marginBottom: '5px' }} />
+          <p className="font-sans" style={{ fontSize: '10px', color: 'rgba(248,248,241,0.45)' }}>65% AI draft · 35% expert review</p>
         </div>
-      </div>
 
-      {/* AI/human split */}
-      <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <p className="font-sans" style={{ fontSize: '11px', color: '#C8FA64', marginBottom: '8px' }}>AI / Human split</p>
-        <div style={{ height: '6px', borderRadius: '3px', background: '#C8FA64', marginBottom: '6px' }} />
-        <p className="font-sans" style={{ fontSize: '10px', color: 'rgba(248,248,242,0.40)' }}>65% AI draft · 35% expert review</p>
-      </div>
-
-      {/* Delivery window */}
-      <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <p className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)', marginBottom: '8px' }}>Delivery window</p>
-        <div style={{ background: '#252525', borderRadius: '4px', padding: '10px 14px', display: 'inline-block' }}>
-          <span className="font-sans" style={{ fontSize: '12px', color: '#F5F5F0' }}>Standard · 8 hours</span>
+        {/* Delivery window */}
+        <div>
+          <p className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,241,0.40)', marginBottom: '6px' }}>Delivery window</p>
+          <span className="font-sans" style={{ fontSize: '12px', color: 'rgba(248,248,241,0.75)', fontWeight: 300 }}>Standard · 8 hours</span>
         </div>
+
       </div>
 
-      {/* Spacer */}
-      <div style={{ height: '24px' }} />
-
-      {/* CTA */}
-      <div style={{ background: '#C8FA64', padding: '16px 20px', textAlign: 'center' }}>
-        <span className="font-sans" style={{ fontSize: '14px', color: '#1A1A1A', fontWeight: 700 }}>Approve and begin →</span>
+      {/* CTA — full-width 48px lime bar */}
+      <div style={{ height: '48px', background: '#DEFF00', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span className="font-sans" style={{ fontSize: '13px', color: '#1F1F1F', fontWeight: 600 }}>Approve and begin →</span>
       </div>
     </div>
   )

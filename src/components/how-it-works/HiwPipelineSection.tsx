@@ -59,7 +59,7 @@ export default function HiwPipelineSection() {
         <div className="w-full overflow-x-auto mb-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/sankey/sankey.svg"
+            src="/images/hiw-sankey/sankey-comparison.svg"
             alt="Two-track flow diagram: Kojo (AI draft → expert review → 4–24 hours) vs traditional agency (multiple handoffs → 2–4 weeks)"
             width={1224}
             height={210}

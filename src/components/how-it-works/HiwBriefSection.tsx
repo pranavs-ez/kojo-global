@@ -12,76 +12,81 @@ const QUESTIONS = [
   { q: 'Are there examples to reference?',        a: "Optional. Informs the expert's quality calibration." },
 ]
 
-// Brief Wizard UI mockup — matches Figma F3 spec (480×380px)
+// Brief Wizard UI mockup — Figma F3 spec: 480×360, r:2, stroke #f8f8f2/0.5
 function BriefWizardMockup() {
   return (
     <div
-      className="shrink-0 rounded-[6px] overflow-hidden"
+      className="shrink-0 overflow-hidden"
       style={{
         width: '100%',
         maxWidth: '480px',
         background: '#1A1A1A',
+        border: '0.5px solid rgba(248,248,242,0.50)',
+        borderRadius: '2px',
       }}
     >
-      {/* Window chrome */}
+      {/* Window chrome — #212121, 36px */}
       <div
         className="flex items-center justify-between"
-        style={{ height: '36px', background: '#252525', borderBottom: '1px solid #333', padding: '0 16px' }}
+        style={{ height: '36px', background: '#212121', padding: '0 16px' }}
       >
-        <div className="flex items-center gap-2">
-          {['#555','#555','#555'].map((c, i) => (
-            <span key={i} style={{ width: 10, height: 10, borderRadius: '50%', background: c, display: 'inline-block' }} />
+        <div className="flex items-center gap-[6px]">
+          {[0,1,2].map(i => (
+            <span key={i} style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(80,80,96,0.45)', display: 'inline-block' }} />
           ))}
         </div>
-        <span className="font-mono" style={{ fontSize: '10px', color: '#666' }}>kojo.global/brief</span>
-        <span style={{ width: 40 }} />
+        <span className="font-mono" style={{ fontSize: '10px', color: 'rgba(80,80,96,0.45)' }}>kojo.global/brief</span>
+        <span style={{ width: 44 }} />
       </div>
 
-      {/* Progress bar row */}
-      <div style={{ padding: '16px 20px 8px' }}>
-        <span className="font-mono" style={{ fontSize: '10px', color: '#888', display: 'block', marginBottom: '6px' }}>Question 3 of 8</span>
-        <div style={{ height: '4px', background: '#333', borderRadius: '2px' }}>
-          <div style={{ width: '37.5%', height: '100%', background: '#C8FA64', borderRadius: '2px' }} />
+      {/* Progress row */}
+      <div style={{ padding: '14px 20px 10px' }}>
+        <span className="font-mono" style={{ fontSize: '10px', color: 'rgba(80,80,96,0.55)', display: 'block', marginBottom: '6px' }}>
+          Question 3 of 8
+        </span>
+        <div style={{ height: '2px', background: 'rgba(80,80,96,0.25)', borderRadius: '1px' }}>
+          <div style={{ width: '37.5%', height: '100%', background: '#DEFF00', borderRadius: '1px' }} />
         </div>
       </div>
 
       {/* Question area */}
-      <div style={{ padding: '20px' }}>
-        <p className="font-sans" style={{ fontSize: '18px', color: '#F5F5F0', fontWeight: 600, marginBottom: '6px' }}>
+      <div style={{ padding: '0 20px 20px' }}>
+        {/* Question */}
+        <p className="font-sans" style={{ fontSize: '20px', color: '#F8F8F2', fontWeight: 600, lineHeight: '1.3', marginBottom: '6px' }}>
           Who is this for?
         </p>
-        <p className="font-sans" style={{ fontSize: '11px', color: '#888', marginBottom: '20px', lineHeight: '1.5' }}>
+        <p className="font-sans" style={{ fontSize: '12px', color: 'rgba(80,80,96,0.60)', lineHeight: '1.5', marginBottom: '16px', fontWeight: 300 }}>
           Audience specificity drives output relevance.
         </p>
 
-        {/* Answer input */}
-        <div style={{ width: '100%', height: '80px', background: '#252525', border: '1px solid #444', borderRadius: '8px', padding: '12px' }}>
-          <p className="font-sans" style={{ fontSize: '11px', color: '#555', lineHeight: '1.5' }}>
+        {/* Input — #212121, stroke #505060/0.5, r:2 */}
+        <div style={{ height: '72px', background: '#212121', border: '0.5px solid rgba(80,80,96,0.50)', borderRadius: '2px', padding: '12px 12px' }}>
+          <p className="font-sans" style={{ fontSize: '12px', color: 'rgba(80,80,96,0.35)', lineHeight: '1.5', fontWeight: 300 }}>
             e.g. Our board of directors — 6 members, mix of operators and investors
           </p>
         </div>
 
-        {/* Helper text */}
-        <p className="font-mono" style={{ fontSize: '10px', color: '#C8FA64', marginTop: '8px' }}>
-          Be specific — 'our board' produces better output than 'investors'
+        {/* Hint — #DEFF00 at 0.65 */}
+        <p className="font-mono" style={{ fontSize: '10px', color: 'rgba(222,255,0,0.65)', marginTop: '8px' }}>
+          Be specific — "our board" produces better output than "investors"
         </p>
 
-        {/* Button row */}
-        <div className="flex justify-between items-center" style={{ marginTop: '20px' }}>
-          <span className="font-sans" style={{ fontSize: '11px', color: '#888', cursor: 'pointer' }}>← Previous</span>
-          <div style={{ background: '#C8FA64', borderRadius: '6px', padding: '10px 20px' }}>
-            <span className="font-sans" style={{ fontSize: '12px', color: '#1A1A1A', fontWeight: 600 }}>Next question →</span>
+        {/* Nav row */}
+        <div className="flex justify-between items-center" style={{ marginTop: '18px' }}>
+          <span className="font-sans" style={{ fontSize: '12px', color: 'rgba(80,80,96,0.55)', fontWeight: 300 }}>← Previous</span>
+          <div style={{ background: '#DEFF00', borderRadius: '2px', padding: '8px 16px' }}>
+            <span className="font-sans" style={{ fontSize: '12px', color: '#1E1E1E', fontWeight: 400 }}>Next question →</span>
           </div>
         </div>
       </div>
 
-      {/* Brand context chip */}
+      {/* Brand context bar — #212121, 32px */}
       <div
         className="flex items-center gap-2"
-        style={{ padding: '8px 20px', background: '#222', borderTop: '1px solid #333' }}
+        style={{ height: '32px', background: '#212121', padding: '0 20px' }}
       >
-        <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#C8FA64', flexShrink: 0 }} />
-        <span className="font-mono" style={{ fontSize: '10px', color: '#666' }}>Brand context: loaded · 3 previous briefs</span>
+        <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(222,255,0,0.65)', flexShrink: 0 }} />
+        <span className="font-mono" style={{ fontSize: '10px', color: 'rgba(80,80,96,0.45)' }}>Brand context: loaded  ·  3 previous briefs</span>
       </div>
     </div>
   )
