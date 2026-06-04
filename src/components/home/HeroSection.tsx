@@ -4,21 +4,15 @@ import Link from 'next/link'
 import CaretMotif from '@/components/atoms/CaretMotif'
 import FlowCard from '@/components/home/FlowCard'
 
-const TICKER_ITEMS = [
-  '5.2M+ slides delivered',
-  '12,000+ research reports',
-  '8,000+ legal drafts',
-  '6,000+ investor decks',
-  '9,000+ competitive landscapes',
-  '14,000+ press releases',
-  '11,000+ email campaigns',
-  '7,000+ board memos',
-  '5,000+ job descriptions',
-  '10,000+ translations delivered',
-  '40+ languages',
-  '7 years of delivery',
-]
+// Ticker text — matches Figma 167:2442 (placeholder numbers replaced with actuals)
+const TICKER = [
+  '5.2M+ slides delivered', '12,000+ research reports', '8,000+ legal drafts',
+  '6,000+ investor decks', '9,000+ competitive landscapes', '14,000+ press releases',
+  '11,000+ email campaigns', '7,000+ board memos', '5,000+ job descriptions',
+  '10,000+ translations delivered', '40+ languages', '7 years of delivery',
+].join('  ·  ') + '  ·  '
 
+// Metrics — Figma 167:2333, values at 28px Mono Medium / labels at 9px Mono Regular
 const METRICS = [
   { value: '10 MIN',  label: 'FIRST RESPONSE SLA' },
   { value: '1,000+', label: 'SUBJECT MATTER EXPERTS' },
@@ -27,22 +21,27 @@ const METRICS = [
 ]
 
 export default function HeroSection() {
-  const tickerContent = TICKER_ITEMS.join('  ·  ') + '  ·  '
-
   return (
-    <section className="relative overflow-hidden" style={{ background: '#1e1e1e' }} aria-label="Hero">
+    <section
+      className="relative overflow-hidden"
+      style={{ background: '#1e1e1e' }}
+      aria-label="Hero"
+    >
 
-      {/* Dot grid — uniform across entire hero, no mask (matches Figma bg-texture) */}
+      {/* ── Dot grid ──────────────────────────────────────────────────────── */}
+      {/* Figma bg-texture 167:94: uniform 2×2 dots on 24px grid, no mask   */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(80,80,96,0.45) 1.5px, transparent 1.5px)',
+          backgroundImage: 'radial-gradient(circle, rgba(80,80,96,0.45) 1px, transparent 1px)',
           backgroundSize: '24px 24px',
         }}
       />
 
-      {/* Gradient overlay — darkens centre, transparent at edges (matches Figma hero-gradient-overlay) */}
+      {/* ── Gradient overlay ──────────────────────────────────────────────── */}
+      {/* Figma 167:2315 hero-gradient-overlay: dark at centre, transparent  */}
+      {/* at edges — rgba(30,30,30,0.8) → 0.4 at 50% → 0 at 100%            */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
@@ -51,14 +50,19 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Hero frame — 900px on desktop, natural height on mobile */}
-      <div className="relative z-10 kj-container py-24 lg:py-0 lg:h-[900px] flex flex-col justify-center">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-0">
+      {/* ── Hero content frame ────────────────────────────────────────────── */}
+      {/* Desktop: exactly 900px tall (Figma bg-texture height), vertically  */}
+      {/* centred. Mobile: natural height with 96px top/bottom padding.       */}
+      <div
+        className="relative z-10 kj-container flex flex-col justify-center py-24 lg:py-0 lg:h-[900px]"
+      >
+        <div className="flex flex-col lg:flex-row lg:items-center">
 
-          {/* Left column — copy */}
-          <div className="flex flex-col items-start lg:w-[580px] shrink-0">
+          {/* ── Left column — copy ──────────────────────────────────────── */}
+          <div className="flex flex-col items-start lg:w-[620px] shrink-0">
 
-            {/* Eyebrow — Figma: Label/Eyebrow "EXPERT AI" */}
+            {/* Eyebrow — Figma 199:2 "EXPERT AI" */}
+            {/* Mono Regular 10px, #DEFF00, tracking 3px, leading 1.2       */}
             <p
               className="font-mono font-normal text-kj-lime uppercase mb-6"
               style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}
@@ -66,9 +70,11 @@ export default function HeroSection() {
               EXPERT AI
             </p>
 
+            {/* H1 — Figma 167:2327: SemiBold 72px, leading 1.08, tracking -1.44px */}
+            {/* Caret 167:2328 sits inline after "Not a draft" on same line  */}
             <h1
-              className="font-sans font-semibold text-kj-light leading-[1.08] tracking-[-0.02em]"
-              style={{ fontSize: 'clamp(2.25rem, 5vw, 4.5rem)' }}
+              className="font-sans font-semibold text-kj-light"
+              style={{ fontSize: 'clamp(2.25rem, 5vw, 4.5rem)', lineHeight: '1.08', letterSpacing: '-0.02em' }}
             >
               Not a draft
               <CaretMotif size="desktop" className="hidden lg:inline-block" />
@@ -77,77 +83,95 @@ export default function HeroSection() {
               The finished thing.
             </h1>
 
+            {/* Subtitle — Figma 167:2329: Regular 18px, rgba(248,248,242,0.36), leading 1.62 */}
             <p
-              className="font-sans text-[18px] leading-[1.62] mt-6 max-w-[480px]"
-              style={{ color: 'rgba(248,248,242,0.36)' }}
+              className="font-sans text-[18px] mt-6 max-w-[480px]"
+              style={{ color: 'rgba(248,248,242,0.36)', lineHeight: '1.62' }}
             >
               AI drafts. Human experts verify. Business-ready output in hours, not weeks.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-start gap-3 mt-8">
+            {/* CTAs — Figma 201:92 primary + 201:66 text link              */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-8">
+
+              {/* Primary — bg #DEFF00, Mono Medium 14px, px-[32px] py-[14px] */}
               <Link
                 href="/signup"
-                className="inline-flex items-center gap-2 px-8 h-[46px] bg-kj-lime text-kj-dark font-mono font-medium text-[14px] rounded-[2px] hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
+                className="inline-flex items-center justify-center rounded-[2px] font-mono font-medium text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
+                style={{ fontSize: '14px', lineHeight: '1.4', paddingLeft: '32px', paddingRight: '32px', paddingTop: '14px', paddingBottom: '14px' }}
               >
                 Start free — 100,000 Kojo on us →
               </Link>
+
+              {/* Text link — Mono Regular 13px, rgba(248,248,242,0.22)      */}
               <Link
                 href="#how-it-works"
-                className="inline-flex items-center h-[46px] font-mono text-[13px] transition-colors"
-                style={{ color: 'rgba(248,248,242,0.22)' }}
+                className="inline-flex items-center font-mono text-[13px] whitespace-nowrap transition-opacity hover:opacity-70"
+                style={{ color: 'rgba(248,248,242,0.22)', lineHeight: '1.4' }}
               >
                 See how it works ↓
               </Link>
             </div>
           </div>
 
-          {/* Right column — FlowCards from System Foundations */}
-          <div className="hidden lg:flex flex-1 justify-end items-center pl-12">
-            <div className="flex flex-col items-center w-[396px] gap-0">
+          {/* ── Right column — FlowCards ─────────────────────────────────── */}
+          {/* Width 396px (Figma card width), hidden on mobile               */}
+          <div className="hidden lg:flex flex-1 justify-end items-center">
+            <div className="flex flex-col items-center" style={{ width: '396px' }}>
+
               <FlowCard type="input" />
-              <div className="flex flex-col items-center">
-                <div className="w-px h-7" style={{ background: 'rgba(222,255,0,0.75)' }} />
-                <div className="w-[7px] h-[7px] rounded-[1px]" style={{ background: 'rgba(222,255,0,0.75)' }} />
+
+              {/* Connector: lime vertical line + square diamond */}
+              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
+                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
+                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
               </div>
+
               <FlowCard type="expert" />
-              <div className="flex flex-col items-center">
-                <div className="w-px h-7" style={{ background: 'rgba(222,255,0,0.75)' }} />
-                <div className="w-[7px] h-[7px] rounded-[1px]" style={{ background: 'rgba(222,255,0,0.75)' }} />
+
+              {/* Connector */}
+              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
+                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
+                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
               </div>
+
               <FlowCard type="output" />
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Status Ticker — bg #1e1e1e, text rgba(222,255,0,0.36) per Figma */}
+      {/* ── Status Ticker ─────────────────────────────────────────────────── */}
+      {/* Figma 167:2441: #1e1e1e bg, 32px tall, Mono Regular 11px           */}
+      {/* text rgba(222,255,0,0.36), borderTop rgba(248,248,242,0.06)         */}
       <div
         className="relative z-10 overflow-hidden"
         style={{
           background: '#1e1e1e',
           borderTop: '1px solid rgba(248,248,242,0.06)',
           height: '32px',
-          display: 'flex',
-          alignItems: 'center',
         }}
-        aria-label="Delivery metrics"
+        aria-hidden="true"
       >
         <div
-          className="flex whitespace-nowrap"
+          className="flex items-center h-full whitespace-nowrap"
           style={{ animation: 'kj-ticker 50s linear infinite' }}
-          aria-hidden="true"
         >
           <span
             className="font-mono shrink-0"
             style={{ fontSize: '11px', color: 'rgba(222,255,0,0.36)', padding: '0 32px' }}
           >
-            {tickerContent}{tickerContent}
+            {TICKER}{TICKER}
           </span>
         </div>
       </div>
 
-      {/* Metrics bar — #212121 */}
+      {/* ── Metrics Bar ───────────────────────────────────────────────────── */}
+      {/* Figma 167:2333: #212121 bg, 96px tall                              */}
+      {/* Values: Mono Medium 28px #f8f8f2 | Labels: Mono Regular 9px        */}
+      {/* rgba(80,80,96,0.85) tracking 1.5px                                 */}
+      {/* Dividers: rgba(80,80,96,0.22), 50px tall, between each metric      */}
       <div
         className="relative z-10"
         style={{
@@ -161,18 +185,22 @@ export default function HeroSection() {
             {METRICS.map((m, i) => (
               <div
                 key={m.label}
-                className="flex flex-col justify-center gap-1"
-                style={i > 0 ? {
-                  borderLeft: '1px solid rgba(80,80,96,0.22)',
-                  paddingLeft: '32px',
-                } : {}}
+                className="flex flex-col justify-center"
+                style={
+                  i > 0
+                    ? { paddingLeft: '32px', borderLeft: '1px solid rgba(80,80,96,0.22)' }
+                    : {}
+                }
               >
-                <p className="font-mono font-medium text-[28px] text-kj-light leading-[1.2]">
+                <p
+                  className="font-mono font-medium text-kj-light leading-[1.2]"
+                  style={{ fontSize: '28px' }}
+                >
                   {m.value}
                 </p>
                 <p
-                  className="font-mono text-[9px] tracking-[1.5px]"
-                  style={{ color: 'rgba(80,80,96,0.85)' }}
+                  className="font-mono font-normal"
+                  style={{ fontSize: '9px', color: 'rgba(80,80,96,0.85)', letterSpacing: '1.5px' }}
                 >
                   {m.label}
                 </p>
@@ -181,6 +209,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
     </section>
   )
 }
