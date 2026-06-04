@@ -4,25 +4,25 @@ const ICP_CARDS = [
   {
     label: 'Scaling Founder',
     desc: '0–90 days post-raise. Everything your investors expect, without hiring for it.',
-    cta: "I'm a founder",
+    primaryCta: "I'm a founder →",
     href: '/for/founders',
   },
   {
     label: 'First CMO',
     desc: 'Content, campaigns, and research at volume. Consistent quality whether you brief once or fifty times.',
-    cta: "I'm a CMO",
+    primaryCta: "I'm a CMO →",
     href: '/for/cmos',
   },
   {
     label: 'Chief of Staff',
-    desc: 'Ad-hoc tasks across any function. Brief it the way you\'d brief your CEO.',
-    cta: "I'm a Chief of Staff",
+    desc: "Ad-hoc tasks across any function. Brief it the way you'd brief your CEO.",
+    primaryCta: "I'm a Chief of Staff →",
     href: '/for/chiefs-of-staff',
   },
   {
     label: 'COO / VP Operations',
     desc: 'One vendor. One SLA. ISO 27001 certified. Replace up to 12 vendor relationships.',
-    cta: "I'm a COO",
+    primaryCta: "I'm a COO →",
     href: '/for/coos',
   },
 ]
@@ -37,7 +37,7 @@ export default function IcpSection() {
       <div className="kj-container">
         <h2
           id="icp-heading"
-          className="font-sans font-regular text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
+          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
         >
           Find your fit
         </h2>
@@ -46,26 +46,58 @@ export default function IcpSection() {
           {ICP_CARDS.map((card) => (
             <div
               key={card.href}
-              className="flex flex-col justify-between gap-6 p-5 rounded-[2px]"
+              className="relative flex flex-col overflow-hidden rounded-[2px]"
               style={{
                 background: 'rgba(80,80,96,0.12)',
-                border: '0.3px solid rgba(248,248,242,0.07)',
-                minHeight: '220px',
+                border: '0.5px solid rgba(248,248,242,0.07)',
+                minHeight: '228px',
               }}
             >
-              <div className="flex flex-col gap-3">
-                <p className="font-sans font-semibold text-[16px] text-kj-light leading-[1.3]">
-                  {card.label}
-                </p>
-                <p className="font-sans font-light text-[13px] leading-[1.6]" style={{ color: 'rgba(248,248,242,0.55)' }}>
-                  {card.desc}
-                </p>
-              </div>
+              {/* Title */}
+              <p
+                className="absolute font-sans font-semibold text-[16px] text-kj-light leading-[1.2]"
+                style={{ top: '19.5px', left: '19.5px' }}
+              >
+                {card.label}
+              </p>
+
+              {/* Description */}
+              <p
+                className="absolute font-sans font-light text-[13px] leading-[1.55]"
+                style={{
+                  color: 'rgba(248,248,242,0.36)',
+                  top: '51.5px',
+                  left: '19.5px',
+                  right: '19.5px',
+                }}
+              >
+                {card.desc}
+              </p>
+
+              {/* Primary CTA — ICP specific */}
               <Link
                 href={card.href}
-                className="inline-flex items-center gap-1 font-mono text-[13px] text-kj-lime hover:opacity-70 transition-opacity"
+                className="absolute font-mono font-normal text-[12px] leading-[1.4] hover:opacity-70 transition-opacity"
+                style={{
+                  color: 'rgba(222,255,0,0.85)',
+                  top: '183.5px',
+                  left: '19.5px',
+                }}
               >
-                {card.cta} →
+                {card.primaryCta}
+              </Link>
+
+              {/* Secondary CTA — Start free */}
+              <Link
+                href="/signup"
+                className="absolute font-sans font-semibold text-[13px] leading-[1.4] hover:opacity-60 transition-opacity"
+                style={{
+                  color: 'rgba(248,248,242,0.40)',
+                  top: '208.5px',
+                  left: '27.5px',
+                }}
+              >
+                Start free →
               </Link>
             </div>
           ))}

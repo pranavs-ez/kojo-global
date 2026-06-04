@@ -31,7 +31,8 @@ const FAQS = [
 ]
 
 export default function FaqSection() {
-  const [open, setOpen] = useState<number | null>(null)
+  // First FAQ open by default
+  const [open, setOpen] = useState<number | null>(0)
 
   return (
     <section
@@ -42,7 +43,7 @@ export default function FaqSection() {
       <div className="kj-container">
         <h2
           id="faq-heading"
-          className="font-sans font-regular text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
+          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
         >
           Common questions
         </h2>
@@ -50,39 +51,29 @@ export default function FaqSection() {
         <div itemScope itemType="https://schema.org/FAQPage">
           {FAQS.map((faq, i) => (
             <div key={i} itemScope itemType="https://schema.org/Question">
-              {/* Divider */}
               <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
-
-              {/* Question button */}
               <button
-                className="w-full flex items-start justify-between gap-6 py-[27px] text-left group"
+                className="w-full flex items-start justify-between gap-6 py-[27px] text-left"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-controls={`faq-${i}`}
               >
-                <span
-                  className="font-sans font-semibold text-[15px] text-kj-light leading-[1.5] flex-1"
-                  itemProp="name"
-                >
+                <span className="font-sans font-semibold text-[15px] text-kj-light leading-[1.5] flex-1" itemProp="name">
                   {faq.q}
                 </span>
-                {/* + / - toggle */}
                 <span
-                  className="font-mono text-[14px] shrink-0 mt-0.5 select-none transition-all duration-200"
+                  className="font-mono text-[14px] shrink-0 mt-0.5 select-none"
                   style={{ color: 'rgba(222,255,0,0.70)' }}
                   aria-hidden="true"
                 >
                   {open === i ? '−' : '+'}
                 </span>
               </button>
-
-              {/* Answer — smooth expand/collapse */}
               <div
                 id={`faq-${i}`}
                 className="overflow-hidden transition-all duration-300 ease-in-out"
                 style={{ maxHeight: open === i ? '400px' : '0px' }}
-                itemScope
-                itemType="https://schema.org/Answer"
+                itemScope itemType="https://schema.org/Answer"
               >
                 <p
                   className="font-sans font-light text-[13px] leading-[1.6] pb-6 max-w-[840px]"

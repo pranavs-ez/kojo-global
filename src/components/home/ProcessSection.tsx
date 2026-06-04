@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const STEPS = [
   {
@@ -32,23 +33,23 @@ export default function ProcessSection() {
       aria-labelledby="process-heading"
     >
       <div className="kj-container">
-        {/* Eyebrow + heading */}
-        <p className="font-mono text-[10px] text-kj-lime tracking-[3px] uppercase mb-4">
+        {/* Eyebrow */}
+        <p className="font-mono font-normal text-kj-lime uppercase mb-4" style={{ fontSize: '10px', letterSpacing: '3px' }}>
           THE PROCESS
         </p>
+        {/* H2 */}
         <h2
           id="process-heading"
-          className="font-sans font-regular text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] max-w-[640px] mb-12"
+          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] max-w-[640px] mb-12"
         >
           Brief in. Business-ready output out.
         </h2>
 
-        {/* 4 steps — horizontal row with arrows */}
-        <div className="flex flex-col md:flex-row items-start gap-0 mb-14">
+        {/* 4 steps — horizontal row with arrows between */}
+        <div className="flex flex-col md:flex-row gap-0 mb-14">
           {STEPS.map((step, i) => (
-            <div key={step.num} className="flex flex-row md:flex-col md:flex-1 items-start gap-4 md:gap-0">
-              {/* Step card */}
-              <div className="flex flex-col gap-3 md:pr-8 flex-1">
+            <div key={step.num} className="flex md:flex-col flex-1 gap-4 md:gap-0">
+              <div className="flex flex-col gap-3 flex-1 md:pr-6">
                 <p className="font-mono font-light text-[28px] text-kj-lime leading-none">
                   {step.num}
                 </p>
@@ -59,57 +60,91 @@ export default function ProcessSection() {
                   {step.body}
                 </p>
               </div>
-              {/* Arrow between steps */}
               {i < STEPS.length - 1 && (
-                <div className="hidden md:flex items-start pt-9 px-2 shrink-0">
-                  <span className="font-sans text-[16px]" style={{ color: 'rgba(248,248,242,0.25)' }}>→</span>
+                <div className="hidden md:flex items-start pt-8 px-1 shrink-0">
+                  <span className="font-sans text-[14px]" style={{ color: 'rgba(248,248,242,0.20)' }}>→</span>
                 </div>
               )}
             </div>
           ))}
         </div>
 
-        {/* Sankey diagram */}
-        <div
-          className="w-full rounded-[2px] overflow-hidden mb-10"
-          style={{ background: '#121212' }}
-        >
-          <svg
-            viewBox="0 0 1200 200"
-            className="w-full"
-            style={{ height: 'clamp(100px, 12vw, 200px)' }}
-            aria-label="Process flow diagram: Brief goes through AI draft and human expert review to become a business-ready deliverable"
+        {/* Sankey — exact Figma graphic using saved connector images */}
+        {/* Container is 1200px wide × 210px tall, matching Figma dimensions */}
+        <div className="w-full overflow-x-auto mb-10">
+          <div
+            className="relative"
+            style={{ width: '1200px', height: '210px' }}
+            aria-label="Process flow: Brief → AI Processing → Human Expert Review → Finished Deliverable"
+            role="img"
           >
-            {/* BRIEF node */}
-            <rect x="0" y="50" width="160" height="100" fill="#232323" rx="2" />
-            <text x="80" y="101" textAnchor="middle" fill="rgba(80,80,96,0.7)" fontSize="10" fontFamily="IBM Plex Mono, monospace">BRIEF</text>
+            {/* Connector curve 1a: brief top → AI (264×100, starts x=16) */}
+            <Image
+              src="/images/sankey/conn-1a.png"
+              alt=""
+              width={264}
+              height={100}
+              className="absolute"
+              style={{ left: 16, top: 0 }}
+              aria-hidden="true"
+            />
+            {/* Connector curve 1b: brief bottom → human (554×110, starts x=16, y=100) */}
+            <Image
+              src="/images/sankey/conn-1b.png"
+              alt=""
+              width={554}
+              height={110}
+              className="absolute"
+              style={{ left: 16, top: 100 }}
+              aria-hidden="true"
+            />
+            {/* Connector curve 2: AI → human (274×100, starts x=296) */}
+            <Image
+              src="/images/sankey/conn-2.png"
+              alt=""
+              width={274}
+              height={100}
+              className="absolute"
+              style={{ left: 296, top: 0 }}
+              aria-hidden="true"
+            />
+            {/* Connector 3: human → finished (gradient fade) */}
+            <div
+              className="absolute rounded-[2px]"
+              style={{
+                left: 586,
+                top: 20,
+                width: 344,
+                height: 160,
+                background: 'linear-gradient(to right, rgba(164,72,250,0.35), rgba(30,30,30,0.35))',
+              }}
+              aria-hidden="true"
+            />
 
-            {/* AI DRAFT band — Electric Lime */}
-            <path d="M160,50 C240,50 260,40 380,40 L380,110 C260,110 240,150 160,150 Z"
-              fill="rgba(222,255,0,0.12)" />
-            <path d="M160,50 C240,50 260,40 380,40"
-              fill="none" stroke="rgba(222,255,0,0.4)" strokeWidth="1" />
-            <text x="270" y="80" textAnchor="middle" fill="rgba(222,255,0,0.75)" fontSize="9" fontFamily="IBM Plex Mono, monospace">AI DRAFT</text>
+            {/* Vertical bars — the 4 nodes */}
+            {/* Brief node */}
+            <div className="absolute rounded-[2px]" style={{ left: 0, top: 20, width: 16, height: 160, background: '#30303c', border: '1px solid rgba(80,80,96,0.6)' }} />
+            {/* AI node */}
+            <div className="absolute rounded-[2px]" style={{ left: 280, top: 0, width: 16, height: 80, background: '#DEFF00' }} />
+            {/* Human node */}
+            <div className="absolute rounded-[2px]" style={{ left: 570, top: 20, width: 16, height: 160, background: '#A448FA' }} />
+            {/* Finished node */}
+            <div className="absolute rounded-[2px]" style={{ left: 930, top: 20, width: 16, height: 160, background: '#1e1e1e', border: '1px solid rgba(248,248,242,0.22)' }} />
 
-            {/* HUMAN EXPERT band — Magenta */}
-            <path d="M380,40 C520,40 560,20 720,20 L720,180 C560,180 520,160 380,110 Z"
-              fill="rgba(164,72,250,0.12)" />
-            <path d="M380,40 C520,40 560,20 720,20"
-              fill="none" stroke="rgba(164,72,250,0.5)" strokeWidth="1" />
-            <text x="550" y="60" textAnchor="middle" fill="rgba(164,72,250,0.9)" fontSize="9" fontFamily="IBM Plex Mono, monospace">SME REVIEW</text>
+            {/* Labels */}
+            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 24, top: 74, letterSpacing: '3px' }}>BRIEF</p>
+            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 304, top: 34, letterSpacing: '3px' }}>AI PROCESSING</p>
+            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 594, top: 94, letterSpacing: '3px' }}>HUMAN EXPERT REVIEW</p>
+            <p className="absolute font-mono text-[10px] text-kj-light" style={{ left: 954, top: 78, letterSpacing: '3px' }}>FINISHED DELIVERABLE</p>
 
-            {/* Converge to output */}
-            <path d="M720,20 C840,20 880,60 1000,60 L1000,140 C880,140 840,180 720,180 Z"
-              fill="rgba(248,248,242,0.05)" />
-
-            {/* DELIVERABLE node */}
-            <rect x="1000" y="50" width="200" height="100" fill="#232323" rx="2" />
-            <text x="1100" y="97" textAnchor="middle" fill="rgba(248,248,242,0.5)" fontSize="10" fontFamily="IBM Plex Mono, monospace">DELIVERABLE</text>
-
-            {/* Time/cost annotations */}
-            <text x="998" y="170" textAnchor="end" fill="rgba(248,248,242,0.25)" fontSize="8" fontFamily="IBM Plex Mono, monospace">Kojo: 4–24 hrs · from $40</text>
-            <text x="998" y="185" textAnchor="end" fill="rgba(248,248,242,0.15)" fontSize="8" fontFamily="IBM Plex Mono, monospace">Agency: 2–4 weeks · from $1,200</text>
-          </svg>
+            {/* Annotations */}
+            <p className="absolute font-mono text-[9px]" style={{ left: 954, top: 108, color: 'rgba(248,248,242,0.4)' }}>
+              Kojo: 4–24 hrs · Agency equiv: 2–4 wks
+            </p>
+            <p className="absolute font-mono text-[9px]" style={{ left: 954, top: 123, color: 'rgba(248,248,242,0.4)' }}>
+              Kojo: from $40 · Agency: from $1,200
+            </p>
+          </div>
         </div>
 
         {/* Note + CTA */}
