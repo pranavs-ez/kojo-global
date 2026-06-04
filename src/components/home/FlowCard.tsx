@@ -47,9 +47,9 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
         </span>
         <span
           className="absolute font-sans text-[12px]"
-          style={{ left: '139px', top: '89px', color: 'rgba(248,248,242,0.42)' }}
+          style={{ left: '139px', top: '89px', color: 'rgba(80,80,96,0.8)' }}
         >
-          First pass generated
+          Drafts and structures against brief
         </span>
 
         {/* Row 2 — SME REVIEW (dot top=123) */}

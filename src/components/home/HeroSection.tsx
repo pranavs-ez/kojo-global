@@ -91,7 +91,7 @@ export default function HeroSection() {
             </p>
 
             {/* CTAs — Figma 201:92 primary + 201:66 text link              */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-8">
 
               {/* Primary — bg #DEFF00, Mono Medium 14px, px-[32px] py-[14px] */}
               <Link
@@ -121,9 +121,9 @@ export default function HeroSection() {
               <FlowCard type="input" />
 
               {/* Connector: lime vertical line + square diamond */}
-              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
-                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
-                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
+              <div className="flex flex-col items-center my-2" style={{ height: '32px', justifyContent: 'center' }}>
+                <div style={{ width: '1px', height: '20px', background: 'rgba(222,255,0,0.60)' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '1px', background: 'rgba(222,255,0,0.60)' }} />
               </div>
 
               <FlowCard type="expert" />
@@ -147,7 +147,7 @@ export default function HeroSection() {
       <div
         className="relative z-10 overflow-hidden"
         style={{
-          background: '#191915',
+          background: '#1e1e1e',
           borderTop: '1px solid rgba(248,248,242,0.06)',
           height: '32px',
         }}
@@ -159,7 +159,7 @@ export default function HeroSection() {
         >
           <span
             className="font-mono shrink-0"
-            style={{ fontSize: '11px', color: 'rgba(222,255,0,0.36)', padding: '0 32px' }}
+            style={{ fontSize: '11px', color: '#DEFF00', padding: '0 32px' }}
           >
             {TICKER}{TICKER}
           </span>
@@ -176,19 +176,15 @@ export default function HeroSection() {
         style={{
           background: '#212121',
           borderTop: '1px solid rgba(248,248,242,0.08)',
-          height: '96px',
         }}
       >
-        <div className="kj-container h-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 h-full">
+        <div className="kj-container">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {METRICS.map((m, i) => (
               <div
                 key={m.label}
                 className={[
-                  'flex flex-col justify-center',
-                  // Mobile (2-col): right-column cells = i%2===1 → indices 1, 3
-                  // Desktop (4-col): all cells after first → indices 1, 2, 3
-                  // i===2 is left-col on mobile — border only on md+
+                  'flex flex-col justify-center py-6',
                   i === 1 || i === 3
                     ? 'border-l border-[rgba(80,80,96,0.22)] pl-8'
                     : i === 2
@@ -203,7 +199,7 @@ export default function HeroSection() {
                   {m.value}
                 </p>
                 <p
-                  className="font-mono font-normal"
+                  className="font-mono font-normal mt-1"
                   style={{ fontSize: '9px', color: 'rgba(80,80,96,0.85)', letterSpacing: '1.5px' }}
                 >
                   {m.label}

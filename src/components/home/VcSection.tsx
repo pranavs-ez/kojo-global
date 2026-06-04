@@ -1,5 +1,6 @@
 // VC Section (S9) — "Backed by a leading VC?"
 // Figma nodes 167:2526–167:2527 | Background: #1e1e1e
+// Plain section: no card wrapper. Heading + body (Light 14px, 0.36) + text link CTA.
 
 import Link from 'next/link'
 
@@ -11,14 +12,9 @@ export default function VcSection() {
       aria-labelledby="vc-heading"
     >
       <div className="kj-container">
-        <div
-          className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 px-8 py-8 rounded-[2px]"
-          style={{
-            background: 'rgba(80,80,96,0.08)',
-            border: '0.5px solid rgba(248,248,242,0.07)',
-          }}
-        >
-          <div className="flex flex-col gap-3 max-w-[720px]">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 max-w-[960px]">
+
+          <div className="flex flex-col gap-4">
             {/* H2 — 167:2526: Sans Regular 28px, tracking -0.02em */}
             <h2
               id="vc-heading"
@@ -27,10 +23,10 @@ export default function VcSection() {
             >
               Backed by a leading VC?
             </h2>
-            {/* Body — 167:2527 */}
+            {/* Body — 167:2527: Sans Light 14px, rgba(248,248,242,0.36), leading 1.6 */}
             <p
-              className="font-sans font-normal text-[15px] leading-[1.6]"
-              style={{ color: 'rgba(248,248,242,0.55)' }}
+              className="font-sans font-light"
+              style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(248,248,242,0.36)', maxWidth: '560px' }}
             >
               Portfolio companies backed by our VC partners get 500,000 Kojo ($500) on first signup and a dedicated onboarding session — five times the standard allocation.
             </p>
@@ -38,11 +34,12 @@ export default function VcSection() {
 
           <Link
             href="/vc-partners"
-            className="shrink-0 inline-flex items-center justify-center rounded-[2px] font-mono font-normal text-kj-dark bg-kj-lime hover:bg-kj-lime-hover transition-all whitespace-nowrap"
-            style={{ fontSize: '13px', paddingLeft: '24px', paddingRight: '24px', paddingTop: '12px', paddingBottom: '12px' }}
+            className="shrink-0 inline-flex items-center font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity whitespace-nowrap"
+            style={{ fontSize: '13px' }}
           >
             Check partner status →
           </Link>
+
         </div>
       </div>
     </section>

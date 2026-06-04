@@ -221,7 +221,7 @@ export default function OutputSection() {
         </div>
 
         {/* ── Content row ─────────────────────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
 
           {/* Left — title + desc + price cards */}
           <div className="flex flex-col gap-6 lg:flex-1">
@@ -295,7 +295,7 @@ export default function OutputSection() {
         </div>
 
         {/* CTA — Figma 600:85: Mono SemiBold 15px, lime bg */}
-        <div className="mt-8 flex justify-start">
+        <div className="mt-5 flex justify-start">
           <Link
             href="/signup"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"

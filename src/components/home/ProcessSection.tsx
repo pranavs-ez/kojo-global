@@ -134,13 +134,14 @@ export default function ProcessSection() {
                 </p>
               </div>
 
-              {/* Arrow connector between cards */}
+              {/* Visual connector between cards */}
               {i < STEPS.length - 1 && (
-                <div
-                  className="hidden md:flex items-center justify-center shrink-0 px-2 self-stretch"
-                  style={{ color: 'rgba(248,248,242,0.20)', fontSize: '14px' }}
-                >
-                  →
+                <div className="hidden md:flex items-center justify-center shrink-0 self-stretch px-1">
+                  <div className="flex flex-col items-center gap-0">
+                    <div style={{ width: '1px', height: '18px', background: 'rgba(248,248,242,0.12)' }} />
+                    <div style={{ width: '5px', height: '5px', borderRadius: '1px', transform: 'rotate(45deg)', background: 'rgba(248,248,242,0.12)' }} />
+                    <div style={{ width: '1px', height: '18px', background: 'rgba(248,248,242,0.12)' }} />
+                  </div>
                 </div>
               )}
             </div>
@@ -149,7 +150,7 @@ export default function ProcessSection() {
 
         {/* ── Sankey diagram ──────────────────────────────────────────────── */}
         {/* Node 184:5214 — SVG for crisp rendering at all screen sizes */}
-        <div className="w-full overflow-x-auto mb-10">
+        <div className="w-full overflow-x-auto mb-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/sankey/sankey.svg"
@@ -158,6 +159,30 @@ export default function ProcessSection() {
             height={210}
             style={{ maxWidth: '100%', height: 'auto', display: 'block' }}
           />
+        </div>
+
+        {/* ── Output type chips — 167:2421–2433 ───────────────────────────── */}
+        {/* Figma: bg rgba(80,80,96,0.12), border rgba(248,248,242,0.12)      */}
+        {/* text: Sans Regular 13px rgba(248,248,242,0.36), px-[15px] py-[9px] */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {['Board Reports', 'RFP Responses', 'Due Diligence', 'Executive Summaries', 'Product Requirements', 'Pitch Decks', 'Compliance Reports'].map((tag) => (
+            <div
+              key={tag}
+              className="rounded-[2px] overflow-hidden"
+              style={{
+                background: 'rgba(80,80,96,0.12)',
+                border: '1px solid rgba(248,248,242,0.12)',
+                padding: '9px 15px',
+              }}
+            >
+              <span
+                className="font-sans font-normal"
+                style={{ fontSize: '13px', color: 'rgba(248,248,242,0.36)' }}
+              >
+                {tag}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* CTA link */}
