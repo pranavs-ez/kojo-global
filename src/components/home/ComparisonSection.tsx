@@ -100,11 +100,6 @@ export default function ComparisonSection() {
           </table>
         </div>
 
-        {/* Disclaimer */}
-        <p className="mt-5 font-sans text-[11px] italic" style={{ color: 'rgba(248,248,242,0.20)' }}>
-          No competitor brand names appear in Kojo copy. Categories only.
-        </p>
-
         {/* CTA — Figma 601:86 centred "Start free →" */}
         <div className="mt-8 flex justify-center">
           <Link

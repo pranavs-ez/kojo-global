@@ -1,7 +1,7 @@
 // Social Proof (S6) — "What Series B and C teams say"
-// Figma nodes 167:2493–167:2502 | Background: #212121
-
-import Link from 'next/link'
+// Figma nodes 167:2494–167:2502 | Background: #212121
+// Cards: 374×240px | Quote absolute top=19.5 h=180 | Attribution absolute top=203.5
+// No divider — just quote at top and attribution near bottom
 
 const QUOTES = [
   {
@@ -27,57 +27,53 @@ export default function SocialProofSection() {
     >
       <div className="kj-container">
 
-        {/* H2 — no eyebrow, same style as all H2s */}
+        {/* H2 */}
         <h2
           id="social-proof-heading"
-          className="font-sans font-normal text-kj-light mb-12"
+          className="font-sans font-normal text-kj-light mb-10"
           style={{ fontSize: '48px', lineHeight: '1.15', letterSpacing: '-0.02em' }}
         >
           What Series B and C teams say
         </h2>
 
-        {/* ── Quote cards — 3-column grid ───────────────────────────────── */}
-        {/* 167:2494: rgba(80,80,96,0.18) bg, 0.5px rgba(248,248,242,0.07)  */}
-        {/* Quote: Sans Regular 14px rgba(248,248,242,0.80), abs top=19.5    */}
-        {/* Attribution: Mono Regular 11px #505060, abs top=203.5            */}
+        {/* ── Quote cards — 3-column grid ───────────────────────────────────── */}
+        {/* Each card: 374×240px, absolute positioned quote + attribution       */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {QUOTES.map((q, i) => (
             <div
               key={i}
               className="relative rounded-[2px] overflow-hidden"
               style={{
+                height: '240px',
                 background: 'rgba(80,80,96,0.18)',
                 border: '0.5px solid rgba(248,248,242,0.07)',
-                minHeight: '230px',
               }}
             >
-              {/* Quote text — Sans Regular 14px, rgba(248,248,242,0.80), leading 1.6 */}
-              {/* h=180 in Figma (absolute), top=19.5, w=334                  */}
+              {/* Quote — top=19.5, w=334, h=180, Sans Regular 14px */}
               <p
-                className="absolute font-sans font-normal"
+                className="absolute font-sans font-normal overflow-hidden"
                 style={{
                   fontSize: '14px',
                   lineHeight: '1.6',
                   color: 'rgba(248,248,242,0.80)',
-                  left: '19.5px',
                   top: '19.5px',
+                  left: '19.5px',
                   right: '19.5px',
                   maxHeight: '180px',
-                  overflow: 'hidden',
                 }}
               >
                 {q.quote}
               </p>
 
-              {/* Attribution — Mono Regular 11px, #505060, leading 1.4, top=203.5 */}
+              {/* Attribution — top=203.5, Mono Regular 11px, #505060 */}
               <p
-                className="absolute font-mono font-normal"
+                className="absolute font-mono font-normal whitespace-nowrap"
                 style={{
                   fontSize: '11px',
                   lineHeight: '1.4',
                   color: '#505060',
-                  left: '19.5px',
                   top: '203.5px',
+                  left: '19.5px',
                 }}
               >
                 {q.attribution}
@@ -85,15 +81,6 @@ export default function SocialProofSection() {
             </div>
           ))}
         </div>
-
-        {/* Footer link */}
-        <Link
-          href="/case-studies"
-          className="inline-flex items-center gap-1 mt-8 font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
-          style={{ fontSize: '13px' }}
-        >
-          Read case studies →
-        </Link>
 
       </div>
     </section>

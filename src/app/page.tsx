@@ -7,7 +7,6 @@ import ServicesSection  from '@/components/home/ServicesSection'
 import SocialProofSection from '@/components/home/SocialProofSection'
 import ComparisonSection from '@/components/home/ComparisonSection'
 import IcpSection       from '@/components/home/IcpSection'
-import VcSection        from '@/components/home/VcSection'
 import FaqSection       from '@/components/home/FaqSection'
 import FinalCtaSection  from '@/components/home/FinalCtaSection'
 
@@ -45,7 +44,6 @@ export default function HomePage() {
       <SocialProofSection />
       <ComparisonSection />
       <IcpSection />
-      <VcSection />
       <FaqSection />
       <FinalCtaSection />
     </>

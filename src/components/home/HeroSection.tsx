@@ -54,7 +54,8 @@ export default function HeroSection() {
       {/* Desktop: exactly 900px tall (Figma bg-texture height), vertically  */}
       {/* centred. Mobile: natural height with 96px top/bottom padding.       */}
       <div
-        className="relative z-10 kj-container flex flex-col justify-center py-24 lg:py-0 lg:h-[900px]"
+        className="relative z-10 kj-container flex flex-col justify-center py-20 lg:py-0"
+        style={{ minHeight: 'min(900px, calc(100vh - 200px))' }}
       >
         <div className="flex flex-col lg:flex-row lg:items-center">
 
@@ -76,29 +77,27 @@ export default function HeroSection() {
               className="font-sans font-semibold text-kj-light"
               style={{ fontSize: 'clamp(2.25rem, 5vw, 4.5rem)', lineHeight: '1.08', letterSpacing: '-0.02em' }}
             >
-              Not a draft
-              <CaretMotif size="desktop" className="hidden lg:inline-block" />
-              <CaretMotif size="mobile" className="inline-block lg:hidden" />
+              Not a draft<CaretMotif />
               <br />
               The finished thing.
             </h1>
 
             {/* Subtitle — Figma 167:2329: Regular 18px, rgba(248,248,242,0.36), leading 1.62 */}
+            {/* 148px gap from H1 bottom on desktop — aligns with Expert AI card bottom */}
             <p
-              className="font-sans text-[18px] mt-6 max-w-[480px]"
+              className="font-sans text-[18px] mt-8 lg:mt-[148px] max-w-[480px]"
               style={{ color: 'rgba(248,248,242,0.36)', lineHeight: '1.62' }}
             >
               AI drafts. Human experts verify. Business-ready output in hours, not weeks.
             </p>
 
             {/* CTAs — Figma 201:92 primary + 201:66 text link              */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-8">
 
               {/* Primary — bg #DEFF00, Mono Medium 14px, px-[32px] py-[14px] */}
               <Link
                 href="/signup"
-                className="inline-flex items-center justify-center rounded-[2px] font-mono font-medium text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap"
-                style={{ fontSize: '14px', lineHeight: '1.4', paddingLeft: '32px', paddingRight: '32px', paddingTop: '14px', paddingBottom: '14px' }}
+                className="inline-flex items-center justify-center rounded-[2px] font-mono font-medium text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap text-[12px] sm:text-[14px] px-4 sm:px-8 py-[14px]"
               >
                 Start free — 100,000 Kojo on us →
               </Link>
@@ -121,18 +120,19 @@ export default function HeroSection() {
 
               <FlowCard type="input" />
 
-              {/* Connector: lime vertical line + square diamond */}
-              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
-                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
-                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
+              {/* Connector: 2px×28px vertical line + 8×7px dot, overlapping 2px = 33px total */}
+              {/* Figma 167:2351/2352: line rgba(222,255,0,0.75), dot #DEFF00 */}
+              <div className="flex flex-col items-center shrink-0" style={{ height: '33px' }}>
+                <div style={{ width: '2px', height: '28px', background: 'rgba(222,255,0,0.75)', flexShrink: 0 }} />
+                <div style={{ width: '8px', height: '7px', background: '#DEFF00', marginTop: '-2px', flexShrink: 0 }} />
               </div>
 
               <FlowCard type="expert" />
 
-              {/* Connector */}
-              <div className="flex flex-col items-center" style={{ height: '42px', justifyContent: 'center' }}>
-                <div style={{ width: '1px', height: '28px', background: 'rgba(222,255,0,0.75)' }} />
-                <div style={{ width: '7px', height: '7px', borderRadius: '1px', background: 'rgba(222,255,0,0.75)' }} />
+              {/* Connector: same pattern */}
+              <div className="flex flex-col items-center shrink-0" style={{ height: '33px' }}>
+                <div style={{ width: '2px', height: '28px', background: 'rgba(222,255,0,0.75)', flexShrink: 0 }} />
+                <div style={{ width: '8px', height: '7px', background: '#DEFF00', marginTop: '-2px', flexShrink: 0 }} />
               </div>
 
               <FlowCard type="output" />
@@ -160,7 +160,7 @@ export default function HeroSection() {
         >
           <span
             className="font-mono shrink-0"
-            style={{ fontSize: '11px', color: 'rgba(222,255,0,0.36)', padding: '0 32px' }}
+            style={{ fontSize: '11px', color: '#DEFF00', padding: '0 32px' }}
           >
             {TICKER}{TICKER}
           </span>
@@ -177,20 +177,21 @@ export default function HeroSection() {
         style={{
           background: '#212121',
           borderTop: '1px solid rgba(248,248,242,0.08)',
-          height: '96px',
         }}
       >
-        <div className="kj-container h-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 h-full">
+        <div className="kj-container">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {METRICS.map((m, i) => (
               <div
                 key={m.label}
-                className="flex flex-col justify-center"
-                style={
-                  i > 0
-                    ? { paddingLeft: '32px', borderLeft: '1px solid rgba(80,80,96,0.22)' }
-                    : {}
-                }
+                className={[
+                  'flex flex-col justify-center py-6',
+                  i === 1 || i === 3
+                    ? 'border-l border-[rgba(80,80,96,0.22)] pl-8'
+                    : i === 2
+                    ? 'md:border-l md:border-[rgba(80,80,96,0.22)] md:pl-8'
+                    : '',
+                ].join(' ')}
               >
                 <p
                   className="font-mono font-medium text-kj-light leading-[1.2]"
@@ -199,7 +200,7 @@ export default function HeroSection() {
                   {m.value}
                 </p>
                 <p
-                  className="font-mono font-normal"
+                  className="font-mono font-normal mt-1"
                   style={{ fontSize: '9px', color: 'rgba(80,80,96,0.85)', letterSpacing: '1.5px' }}
                 >
                   {m.label}

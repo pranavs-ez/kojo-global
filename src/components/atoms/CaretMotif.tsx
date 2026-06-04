@@ -1,29 +1,26 @@
 'use client'
 
 interface CaretMotifProps {
-  size?: 'desktop' | 'mobile'
   className?: string
   state?: 'blinking' | 'stopped'
 }
 
+// Single caret — no dual desktop/mobile variants to avoid display class conflicts.
+// 24×5px matches Figma 167:2328. Caller must include display class if needed.
 export default function CaretMotif({
-  size = 'desktop',
   className = '',
   state = 'blinking',
 }: CaretMotifProps) {
-  const w = size === 'desktop' ? 24 : 20
-  const h = size === 'desktop' ? 5  : 4
-
   return (
     <span
       className={[
-        'inline-block bg-kj-lime rounded-[1px] ml-1 align-middle',
+        'bg-kj-lime rounded-[1px] ml-2 align-baseline',
         state === 'blinking'
           ? '[animation:kj-blink_1.2s_ease-in-out_infinite]'
           : 'opacity-100',
         className,
       ].join(' ')}
-      style={{ width: w, height: h }}
+      style={{ display: 'inline-block', width: 24, height: 5 }}
       aria-hidden="true"
     />
   )

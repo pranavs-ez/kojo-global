@@ -1,6 +1,6 @@
-// ICP (S8) — "Find your fit"
-// Figma nodes 167:2509–167:2525 | Background: #212121
-// ONE CTA per card only — the role-specific link
+// ICP + VC (S8/S9) — "Find your fit" + "Backed by a leading VC?"
+// Figma: ICP BG y=4915 h=679 | Cards: 282×256px | VC content below cards
+// VC heading at y=5375 (36px below cards bottom), body at y=5413, CTA at y=5489
 
 import Link from 'next/link'
 
@@ -49,9 +49,7 @@ export default function IcpSection() {
           Find your fit
         </h2>
 
-        {/* ── ICP cards — 4-column grid ─────────────────────────────────── */}
-        {/* 167:2510: rgba(80,80,96,0.12) bg, 0.5px rgba(248,248,242,0.07)  */}
-        {/* title top=19.5, desc top=51.5 w=242 h=100, cta top=218.5        */}
+        {/* ── ICP cards — 4-column grid, 282×256px each ────────────────────── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {ICP_CARDS.map((card) => (
             <div
@@ -60,7 +58,7 @@ export default function IcpSection() {
               style={{
                 background: 'rgba(80,80,96,0.12)',
                 border: '0.5px solid rgba(248,248,242,0.07)',
-                minHeight: '250px',
+                height: '256px',
               }}
             >
               {/* Title — Sans SemiBold 16px, top=19.5 */}
@@ -71,8 +69,7 @@ export default function IcpSection() {
                 {card.label}
               </p>
 
-              {/* Description — Sans Light 13px, rgba(248,248,242,0.36), leading 1.55 */}
-              {/* w=242, h=100 (clipped) per Figma 167:2512                  */}
+              {/* Description — Sans Light 13px, top=51.5, w=242, h=100 */}
               <p
                 className="absolute font-sans font-light overflow-hidden"
                 style={{
@@ -88,8 +85,7 @@ export default function IcpSection() {
                 {card.desc}
               </p>
 
-              {/* CTA — Mono Regular 12px, rgba(222,255,0,0.85), top=218.5  */}
-              {/* ONE CTA only per Figma 167:2513                            */}
+              {/* CTA — Mono Regular 12px, top=218.5 */}
               <Link
                 href={card.href}
                 className="absolute font-mono font-normal hover:opacity-70 transition-opacity"
@@ -105,6 +101,32 @@ export default function IcpSection() {
               </Link>
             </div>
           ))}
+        </div>
+
+        {/* ── VC Section — "Backed by a leading VC?" ────────────────────────── */}
+        {/* Figma 167:2526–2527 + 201:72: 36px below cards, same section BG    */}
+        <div className="mt-9">
+          <h3
+            className="font-sans font-normal text-kj-light mb-3"
+            style={{ fontSize: '28px', lineHeight: '1.15', letterSpacing: '-0.02em' }}
+          >
+            Backed by a leading VC?
+          </h3>
+
+          <p
+            className="font-sans font-light mb-6"
+            style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(248,248,242,0.36)', maxWidth: '760px' }}
+          >
+            Portfolio companies backed by our VC partners get 500,000 Kojo ($500) on first signup and a dedicated onboarding session — five times the standard allocation.
+          </p>
+
+          <Link
+            href="/vc-partners"
+            className="inline-flex items-center font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
+            style={{ fontSize: '13px' }}
+          >
+            Check partner status →
+          </Link>
         </div>
 
       </div>

@@ -16,7 +16,7 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
           border: '1px solid rgba(222,255,0,0.9)',
         }}
       >
-        {/* Label row — "02 ·" (rgba(222,255,0,0.36), 1px) + "EXPERT AI SYSTEM" (rgba(222,255,0,0.85), 2.5px) */}
+        {/* Label row */}
         <div className="absolute flex items-baseline" style={{ left: '19px', top: '13px' }}>
           <span className="font-mono text-[9px] leading-normal" style={{ color: 'rgba(222,255,0,0.36)', letterSpacing: '1px' }}>
             02 ·&nbsp;
@@ -26,7 +26,7 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
           </span>
         </div>
 
-        {/* H3 — top: 39px per Figma */}
+        {/* H3 */}
         <p
           className="absolute font-sans font-semibold text-kj-light"
           style={{ left: '19px', top: '39px', fontSize: '20px', lineHeight: '1.2' }}
@@ -34,14 +34,14 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
           AI + Human Expertise
         </p>
 
-        {/* Row 1 — AI DRAFT (dot top=91, label top=90, desc top=89) */}
+        {/* Row 1 — AI DRAFT: dot top=95, label top=91, desc top=89 */}
         <span
           className="absolute rounded-full"
-          style={{ left: '19px', top: '91px', width: '5px', height: '5px', background: 'rgba(80,80,96,0.80)' }}
+          style={{ left: '19px', top: '95px', width: '5px', height: '5px', background: 'rgba(80,80,96,0.80)' }}
         />
         <span
           className="absolute font-mono text-[9px]"
-          style={{ left: '33px', top: '90px', color: 'rgba(80,80,96,0.80)', letterSpacing: '1.5px' }}
+          style={{ left: '33px', top: '91px', color: 'rgba(80,80,96,0.80)', letterSpacing: '1.5px' }}
         >
           AI DRAFT
         </span>
@@ -52,14 +52,14 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
           First pass generated
         </span>
 
-        {/* Row 2 — SME REVIEW (dot top=123) */}
+        {/* Row 2 — SME REVIEW: dot top=127, label top=123, desc top=121 */}
         <span
           className="absolute rounded-full"
-          style={{ left: '19px', top: '123px', width: '5px', height: '5px', background: '#DEFF00' }}
+          style={{ left: '19px', top: '127px', width: '5px', height: '5px', background: '#DEFF00' }}
         />
         <span
           className="absolute font-mono text-[9px] text-kj-lime"
-          style={{ left: '33px', top: '122px', letterSpacing: '1.5px' }}
+          style={{ left: '33px', top: '123px', letterSpacing: '1.5px' }}
         >
           SME REVIEW
         </span>
@@ -70,14 +70,14 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
           Subject matter expert verifies
         </span>
 
-        {/* Row 3 — VERIFIED (dot top=155) */}
+        {/* Row 3 — VERIFIED: dot top=159, label top=155, desc top=153 */}
         <span
           className="absolute rounded-full"
-          style={{ left: '19px', top: '155px', width: '5px', height: '5px', background: '#A448FA' }}
+          style={{ left: '19px', top: '159px', width: '5px', height: '5px', background: '#A448FA' }}
         />
         <span
           className="absolute font-mono text-[9px] text-kj-primary"
-          style={{ left: '33px', top: '154px', letterSpacing: '1.5px' }}
+          style={{ left: '33px', top: '155px', letterSpacing: '1.5px' }}
         >
           VERIFIED
         </span>
@@ -112,7 +112,7 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
         </span>
       </div>
 
-      {/* H3 — top: 37px */}
+      {/* H3 */}
       <p
         className="absolute font-sans font-semibold text-kj-light"
         style={{ left: '19px', top: '37px', fontSize: '20px', lineHeight: '1.2' }}
@@ -120,7 +120,7 @@ export default function FlowCard({ type }: { type: FlowCardType }) {
         {isInput ? 'Submit a brief' : 'Business-Ready Output'}
       </p>
 
-      {/* Description — top: 69px */}
+      {/* Description */}
       <p
         className="absolute font-sans text-[12px]"
         style={{ left: '19px', top: '69px', color: 'rgba(248,248,242,0.42)' }}

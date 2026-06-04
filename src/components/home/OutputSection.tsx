@@ -192,39 +192,37 @@ export default function OutputSection() {
           We show you the agency equivalent before you see any Kojo price. Every time.
         </p>
 
-        {/* ── Tab row ─────────────────────────────────────────────────────── */}
-        {/* Active: rgba(222,255,0,0.08) bg, #deff00 border + text            */}
-        {/* Inactive: rgba(80,80,96,0.12) bg, rgba(80,80,96,0.35) border,     */}
-        {/*           rgba(248,248,242,0.45) text  — per 167:2555/2557         */}
-        <div className="flex flex-wrap gap-2 mb-8" role="tablist">
-          {TABS.map((t, i) => (
-            <button
-              key={t.label}
-              role="tab"
-              aria-selected={active === i}
-              onClick={() => setActive(i)}
-              className="rounded-[2px] font-mono font-normal transition-all"
-              style={{
-                fontSize: '12px',
-                lineHeight: '1.4',
-                padding: '9px 13px',
-                background: active === i ? 'rgba(222,255,0,0.08)' : 'rgba(80,80,96,0.12)',
-                color: active === i ? '#DEFF00' : 'rgba(248,248,242,0.45)',
-                border: active === i
-                  ? '1px solid #DEFF00'
-                  : '1px solid rgba(80,80,96,0.35)',
-              }}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+        {/* ── Content row: tabs + content on left, document preview on right ── */}
+        {/* Preview top aligns with tab row top (Figma: preview y=2586, tabs y=2606) */}
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8">
 
-        {/* ── Content row ─────────────────────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left — tabs + title + desc + price cards */}
+          <div className="flex flex-col gap-0 lg:flex-1">
 
-          {/* Left — title + desc + price cards */}
-          <div className="flex flex-col gap-6 lg:flex-1">
+            {/* Tab row */}
+            <div className="flex flex-wrap gap-2 mb-8" role="tablist">
+              {TABS.map((t, i) => (
+                <button
+                  key={t.label}
+                  role="tab"
+                  aria-selected={active === i}
+                  onClick={() => setActive(i)}
+                  className="rounded-[2px] font-mono font-normal transition-all"
+                  style={{
+                    fontSize: '12px',
+                    lineHeight: '1.4',
+                    padding: '9px 13px',
+                    background: active === i ? 'rgba(222,255,0,0.08)' : 'rgba(80,80,96,0.12)',
+                    color: active === i ? '#DEFF00' : 'rgba(248,248,242,0.45)',
+                    border: active === i
+                      ? '1px solid #DEFF00'
+                      : '1px solid rgba(80,80,96,0.35)',
+                  }}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
 
             {/* Tab title — 167:2563: Sans SemiBold 20px */}
             <div>
@@ -294,16 +292,8 @@ export default function OutputSection() {
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <p
-          className="mt-6 font-sans text-[12px]"
-          style={{ color: 'rgba(248,248,242,0.30)' }}
-        >
-          Agency equivalent shown for comparison. Kojo estimates are calculated in real time as you brief — you see the full cost before approving anything.
-        </p>
-
-        {/* CTA — Figma 600:85: Mono SemiBold 15px, lime bg, centred */}
-        <div className="mt-8 flex justify-center">
+        {/* CTA — Figma 600:85: 24px below document preview bottom */}
+        <div className="mt-6 flex justify-start">
           <Link
             href="/signup"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"

@@ -40,22 +40,23 @@ export default function RecognitionSection() {
           Sound familiar?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+        {/* grid items stretch to equal height; flex-1 spacer pushes quote+attr to bottom */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {COLUMNS.map((col) => (
-            <div key={col.label} className="flex flex-col gap-4">
+            <div key={col.label} className="flex flex-col">
 
-              {/* Label — Figma 167:2446: Sans Light 18px, rgba(248,248,242,0.55) */}
+              {/* Label — Sans Light 18px */}
               <p
-                className="font-sans font-light"
+                className="font-sans font-light mb-4"
                 style={{ fontSize: '18px', color: 'rgba(248,248,242,0.55)' }}
               >
                 {col.label}
               </p>
 
-              {/* Divider — rgba(80,80,96,0.30) */}
-              <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
+              {/* Divider */}
+              <div className="mb-4" style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
 
-              {/* Body — Figma 167:2448: Sans Light 14px, rgba(248,248,242,0.36), leading 1.6 */}
+              {/* Body — Sans Light 14px */}
               <p
                 className="font-sans font-light whitespace-pre-line"
                 style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(248,248,242,0.36)' }}
@@ -63,15 +64,18 @@ export default function RecognitionSection() {
                 {col.body}
               </p>
 
-              {/* Quote — Figma 167:2449: Sans Regular 13px, #DEFF00 (lime), leading 1.6 — NOT italic */}
+              {/* Spacer — pushes quote + attribution to bottom */}
+              <div className="flex-1" style={{ minHeight: '40px' }} />
+
+              {/* Quote — Sans Regular 13px, lime */}
               <p
-                className="font-sans font-normal text-kj-lime mt-2"
+                className="font-sans font-normal text-kj-lime mb-2"
                 style={{ fontSize: '13px', lineHeight: '1.6' }}
               >
                 {col.quote}
               </p>
 
-              {/* Attribution — Figma 167:2450: Mono Regular 11px, #505060, leading 1.4 */}
+              {/* Attribution — Mono Regular 11px, #505060 */}
               <p
                 className="font-mono font-normal"
                 style={{ fontSize: '11px', lineHeight: '1.4', color: '#505060' }}
