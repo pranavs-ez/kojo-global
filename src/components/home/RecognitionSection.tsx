@@ -1,3 +1,6 @@
+// Recognition (F2) — "Sound familiar?" — Figma nodes 167:2445–167:2460
+// Background: #212121 (surface-recognition)
+
 const COLUMNS = [
   {
     label: 'Freelancers',
@@ -27,9 +30,12 @@ export default function RecognitionSection() {
       aria-labelledby="recognition-heading"
     >
       <div className="kj-container">
+
+        {/* H2 — Figma 167:2445: Sans Regular 48px, #f8f8f2, leading 1.15, tracking -0.02em */}
         <h2
           id="recognition-heading"
-          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
+          className="font-sans font-normal text-kj-light mb-12"
+          style={{ fontSize: '48px', lineHeight: '1.15', letterSpacing: '-0.02em' }}
         >
           Sound familiar?
         </h2>
@@ -37,27 +43,46 @@ export default function RecognitionSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {COLUMNS.map((col) => (
             <div key={col.label} className="flex flex-col gap-4">
-              {/* Label — Figma 167:2446: Light 18px, rgba(248,248,242,0.55) */}
-              <p className="font-sans font-light text-[18px]" style={{ color: 'rgba(248,248,242,0.55)' }}>
+
+              {/* Label — Figma 167:2446: Sans Light 18px, rgba(248,248,242,0.55) */}
+              <p
+                className="font-sans font-light"
+                style={{ fontSize: '18px', color: 'rgba(248,248,242,0.55)' }}
+              >
                 {col.label}
               </p>
-              {/* Divider */}
-              <div className="w-full h-px" style={{ background: 'rgba(80,80,96,0.30)' }} />
-              {/* Body — Figma 167:2448: Light 14px, rgba(248,248,242,0.36) */}
-              <p className="font-sans font-light text-[14px] leading-[1.6] whitespace-pre-line" style={{ color: 'rgba(248,248,242,0.36)' }}>
+
+              {/* Divider — rgba(80,80,96,0.30) */}
+              <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
+
+              {/* Body — Figma 167:2448: Sans Light 14px, rgba(248,248,242,0.36), leading 1.6 */}
+              <p
+                className="font-sans font-light whitespace-pre-line"
+                style={{ fontSize: '14px', lineHeight: '1.6', color: 'rgba(248,248,242,0.36)' }}
+              >
                 {col.body}
               </p>
-              {/* Quote — Figma 167:2449: Regular 13px, #DEFF00 (lime, NOT italic) */}
-              <p className="font-sans font-normal text-[13px] leading-[1.6] mt-2 text-kj-lime">
+
+              {/* Quote — Figma 167:2449: Sans Regular 13px, #DEFF00 (lime), leading 1.6 — NOT italic */}
+              <p
+                className="font-sans font-normal text-kj-lime mt-2"
+                style={{ fontSize: '13px', lineHeight: '1.6' }}
+              >
                 {col.quote}
               </p>
-              {/* Attribution — slate #505060 */}
-              <p className="font-sans text-[13px] leading-normal" style={{ color: '#505060' }}>
+
+              {/* Attribution — Figma 167:2450: Mono Regular 11px, #505060, leading 1.4 */}
+              <p
+                className="font-mono font-normal"
+                style={{ fontSize: '11px', lineHeight: '1.4', color: '#505060' }}
+              >
                 {col.attribution}
               </p>
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
   )
