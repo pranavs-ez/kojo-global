@@ -1,4 +1,7 @@
 'use client'
+// FAQ (S10) — "Common questions"
+// Figma nodes 167:2532–167:2551 | Background: #181818
+// First FAQ open by default (167:2536 shows "−")
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -31,7 +34,7 @@ const FAQS = [
 ]
 
 export default function FaqSection() {
-  // First FAQ open by default
+  // 167:2536 shows "−" meaning first FAQ is open by default
   const [open, setOpen] = useState<number | null>(0)
 
   return (
@@ -41,39 +44,54 @@ export default function FaqSection() {
       aria-labelledby="faq-heading"
     >
       <div className="kj-container">
+
+        {/* H2 — 167:2532: Sans Regular 48px, tracking -0.02em */}
         <h2
           id="faq-heading"
-          className="font-sans font-normal text-[48px] text-kj-light leading-[1.15] tracking-[-0.02em] mb-12"
+          className="font-sans font-normal text-kj-light mb-12"
+          style={{ fontSize: '48px', lineHeight: '1.15', letterSpacing: '-0.02em' }}
         >
           Common questions
         </h2>
 
+        {/* ── Accordion ────────────────────────────────────────────────── */}
         <div itemScope itemType="https://schema.org/FAQPage">
           {FAQS.map((faq, i) => (
             <div key={i} itemScope itemType="https://schema.org/Question">
+              {/* Divider */}
               <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
+
+              {/* Question row */}
               <button
                 className="w-full flex items-start justify-between gap-6 py-[27px] text-left"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
                 aria-controls={`faq-${i}`}
               >
-                <span className="font-sans font-semibold text-[15px] text-kj-light leading-[1.5] flex-1" itemProp="name">
+                <span
+                  className="font-sans font-semibold text-kj-light flex-1"
+                  style={{ fontSize: '15px', lineHeight: '1.5' }}
+                  itemProp="name"
+                >
                   {faq.q}
                 </span>
+                {/* + / − toggle — Mono, lime 70% */}
                 <span
-                  className="font-mono text-[14px] shrink-0 mt-0.5 select-none"
-                  style={{ color: 'rgba(222,255,0,0.70)' }}
+                  className="font-mono shrink-0 mt-0.5 select-none"
+                  style={{ fontSize: '14px', color: 'rgba(222,255,0,0.70)' }}
                   aria-hidden="true"
                 >
                   {open === i ? '−' : '+'}
                 </span>
               </button>
+
+              {/* Answer — smooth max-height transition */}
               <div
                 id={`faq-${i}`}
                 className="overflow-hidden transition-all duration-300 ease-in-out"
                 style={{ maxHeight: open === i ? '400px' : '0px' }}
-                itemScope itemType="https://schema.org/Answer"
+                itemScope
+                itemType="https://schema.org/Answer"
               >
                 <p
                   className="font-sans font-light text-[13px] leading-[1.6] pb-6 max-w-[840px]"
@@ -85,15 +103,19 @@ export default function FaqSection() {
               </div>
             </div>
           ))}
+          {/* Final divider */}
           <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)' }} />
         </div>
 
+        {/* Footer link */}
         <Link
           href="/faq"
-          className="inline-flex items-center gap-1 mt-8 font-mono text-[13px] text-kj-lime hover:opacity-70 transition-opacity"
+          className="inline-flex items-center gap-1 mt-8 font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
+          style={{ fontSize: '13px' }}
         >
           More questions answered →
         </Link>
+
       </div>
     </section>
   )
