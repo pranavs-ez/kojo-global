@@ -14,7 +14,7 @@ export default function CaretMotif({
   return (
     <span
       className={[
-        'bg-kj-lime rounded-[1px] ml-2 align-bottom',
+        'bg-kj-lime rounded-[1px] ml-2 align-text-bottom',
         state === 'blinking'
           ? '[animation:kj-blink_1.2s_ease-in-out_infinite]'
           : 'opacity-100',
