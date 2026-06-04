@@ -294,16 +294,8 @@ export default function OutputSection() {
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <p
-          className="mt-6 font-sans text-[12px]"
-          style={{ color: 'rgba(248,248,242,0.30)' }}
-        >
-          Agency equivalent shown for comparison. Kojo estimates are calculated in real time as you brief — you see the full cost before approving anything.
-        </p>
-
-        {/* CTA — Figma 600:85: Mono SemiBold 15px, lime bg, centred */}
-        <div className="mt-8 flex justify-center">
+        {/* CTA — Figma 600:85: Mono SemiBold 15px, lime bg */}
+        <div className="mt-8 flex justify-start">
           <Link
             href="/signup"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"

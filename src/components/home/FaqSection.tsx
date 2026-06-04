@@ -94,7 +94,7 @@ export default function FaqSection() {
                 itemType="https://schema.org/Answer"
               >
                 <p
-                  className="font-sans font-light text-[13px] leading-[1.6] pb-6 max-w-[840px]"
+                  className="font-sans font-light text-[13px] leading-[1.6] pb-6"
                   style={{ color: 'rgba(248,248,242,0.60)' }}
                   itemProp="text"
                 >

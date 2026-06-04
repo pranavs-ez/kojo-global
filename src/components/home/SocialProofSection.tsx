@@ -86,14 +86,6 @@ export default function SocialProofSection() {
           ))}
         </div>
 
-        {/* Footer link */}
-        <Link
-          href="/case-studies"
-          className="inline-flex items-center gap-1 mt-8 font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
-          style={{ fontSize: '13px' }}
-        >
-          Read case studies →
-        </Link>
 
       </div>
     </section>

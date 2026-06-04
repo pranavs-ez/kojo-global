@@ -54,7 +54,8 @@ export default function HeroSection() {
       {/* Desktop: exactly 900px tall (Figma bg-texture height), vertically  */}
       {/* centred. Mobile: natural height with 96px top/bottom padding.       */}
       <div
-        className="relative z-10 kj-container flex flex-col justify-center py-24 lg:py-0 lg:h-[900px]"
+        className="relative z-10 kj-container flex flex-col justify-center py-20 lg:py-0"
+        style={{ minHeight: 'min(900px, calc(100vh - 200px))' }}
       >
         <div className="flex flex-col lg:flex-row lg:items-center">
 
@@ -76,9 +77,7 @@ export default function HeroSection() {
               className="font-sans font-semibold text-kj-light"
               style={{ fontSize: 'clamp(2.25rem, 5vw, 4.5rem)', lineHeight: '1.08', letterSpacing: '-0.02em' }}
             >
-              Not a draft
-              <CaretMotif size="desktop" className="hidden lg:inline-block" />
-              <CaretMotif size="mobile" className="inline-block lg:hidden" />
+              Not a draft<CaretMotif />
               <br />
               The finished thing.
             </h1>
@@ -148,7 +147,7 @@ export default function HeroSection() {
       <div
         className="relative z-10 overflow-hidden"
         style={{
-          background: '#1e1e1e',
+          background: '#191915',
           borderTop: '1px solid rgba(248,248,242,0.06)',
           height: '32px',
         }}
@@ -185,12 +184,17 @@ export default function HeroSection() {
             {METRICS.map((m, i) => (
               <div
                 key={m.label}
-                className="flex flex-col justify-center"
-                style={
-                  i > 0
-                    ? { paddingLeft: '32px', borderLeft: '1px solid rgba(80,80,96,0.22)' }
-                    : {}
-                }
+                className={[
+                  'flex flex-col justify-center',
+                  // Mobile (2-col): right-column cells = i%2===1 → indices 1, 3
+                  // Desktop (4-col): all cells after first → indices 1, 2, 3
+                  // i===2 is left-col on mobile — border only on md+
+                  i === 1 || i === 3
+                    ? 'border-l border-[rgba(80,80,96,0.22)] pl-8'
+                    : i === 2
+                    ? 'md:border-l md:border-[rgba(80,80,96,0.22)] md:pl-8'
+                    : '',
+                ].join(' ')}
               >
                 <p
                   className="font-mono font-medium text-kj-light leading-[1.2]"

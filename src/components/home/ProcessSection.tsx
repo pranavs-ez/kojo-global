@@ -160,14 +160,6 @@ export default function ProcessSection() {
           />
         </div>
 
-        {/* Note */}
-        <p
-          className="font-sans text-[14px] leading-[1.6] mb-5"
-          style={{ color: 'rgba(248,248,242,0.45)', maxWidth: '720px' }}
-        >
-          AI handles the drafting. A content strategist, research analyst, or legal writer reviews everything before it reaches you. That&apos;s not a wrapper — that&apos;s a quality system.
-        </p>
-
         {/* CTA link */}
         <Link
           href="/how-it-works"
