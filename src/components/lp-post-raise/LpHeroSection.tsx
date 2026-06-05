@@ -6,10 +6,29 @@ const CTA_HREF = '/signup'
 export default function LpHeroSection() {
   return (
     <section
-      style={{ backgroundColor: '#1e1e1e', padding: '80px 0 72px' }}
+      className="relative overflow-hidden"
+      style={{ background: '#1e1e1e' }}
       aria-labelledby="lp-hero-heading"
     >
-      <div className="kj-container">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(80,80,96,0.45) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: 'radial-gradient(ellipse 72% 58% at 50% 50%, rgba(30,30,30,0.80) 0%, rgba(30,30,30,0.40) 50%, rgba(30,30,30,0) 100%)',
+        }}
+      />
+
+      <div className="relative z-10 kj-container py-16 lg:py-24" style={{ paddingTop: '80px', paddingBottom: '72px' }}>
 
         <p className="font-mono font-normal text-kj-lime uppercase mb-5"
           style={{ fontSize: '10px', letterSpacing: '3px', lineHeight: '1.2' }}>
@@ -42,6 +61,9 @@ export default function LpHeroSection() {
         </p>
 
       </div>
+
+      {/* Section bottom border */}
+      <div style={{ height: '1px', background: 'rgba(248,248,242,0.08)' }} />
     </section>
   )
 }

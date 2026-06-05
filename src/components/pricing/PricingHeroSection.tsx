@@ -4,11 +4,29 @@ import Link from 'next/link'
 export default function PricingHeroSection() {
   return (
     <section
-      className="kj-section kj-hero-grid"
-      style={{ backgroundColor: '#1e1e1e' }}
+      className="relative overflow-hidden"
+      style={{ background: '#1e1e1e' }}
       aria-labelledby="pricing-hero-heading"
     >
-      <div className="kj-container">
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(80,80,96,0.45) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background: 'radial-gradient(ellipse 72% 58% at 50% 50%, rgba(30,30,30,0.80) 0%, rgba(30,30,30,0.40) 50%, rgba(30,30,30,0) 100%)',
+        }}
+      />
+
+      <div className="relative z-10 kj-container py-16 lg:py-24">
 
         {/* Eyebrow */}
         <p className="font-mono font-normal text-kj-lime uppercase mb-5"
@@ -48,6 +66,9 @@ export default function PricingHeroSection() {
         </p>
 
       </div>
+
+      {/* Section bottom border */}
+      <div style={{ height: '1px', background: 'rgba(248,248,242,0.08)' }} />
     </section>
   )
 }
