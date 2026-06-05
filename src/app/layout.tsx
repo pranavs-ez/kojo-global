@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import Nav from '@/components/patterns/Nav'
 import Footer from '@/components/patterns/Footer'
 import RevealObserver from '@/components/layout/RevealObserver'
+import PageTransition from '@/components/layout/PageTransition'
 import './globals.css'
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -47,7 +48,9 @@ export default async function RootLayout({
           Skip to main content
         </a>
         {!isLp && <Nav />}
-        <main id="main-content">{children}</main>
+        <main id="main-content">
+          <PageTransition>{children}</PageTransition>
+        </main>
         {!isLp && <Footer />}
         <RevealObserver />
       </body>

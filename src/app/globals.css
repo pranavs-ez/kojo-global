@@ -50,7 +50,7 @@
   /* Durations */
   --duration-fast:     200ms;
   --duration-medium:   300ms;
-  --duration-entrance: 400ms;
+  --duration-entrance: 600ms;
 
   /* Easing */
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -71,6 +71,19 @@
 @keyframes kj-fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kj-page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.kj-page-enter {
+  animation: kj-page-enter 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kj-page-enter { animation: none; }
 }
 
 @keyframes blobDrift {
@@ -119,13 +132,17 @@ body {
 .kj-enter {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity var(--duration-entrance) ease,
-              transform var(--duration-entrance) ease;
+  /* No transition on entry — prevents visible-to-hidden "anti-animation"
+     when the class is first applied. Transition lives on .is-visible only. */
 }
 
 .kj-enter.is-visible {
   opacity: 1;
   transform: translateY(0);
+  transition-property: opacity, transform;
+  transition-duration: 600ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
 /* ─── Section structure ──────────────────────────────────────────────────── */
