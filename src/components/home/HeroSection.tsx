@@ -114,9 +114,9 @@ export default function HeroSection() {
           </div>
 
           {/* ── Right column — FlowCards ─────────────────────────────────── */}
-          {/* Width 396px (Figma card width), hidden on mobile               */}
-          <div className="hidden lg:flex flex-1 justify-end items-center">
-            <div className="flex flex-col items-center" style={{ width: '396px' }}>
+          {/* 396px wide on desktop; full-width (max 396px) on mobile        */}
+          <div className="flex flex-1 justify-center lg:justify-end items-center mt-12 lg:mt-0">
+            <div className="flex flex-col items-center w-full" style={{ maxWidth: '396px' }}>
 
               <FlowCard type="input" />
 
