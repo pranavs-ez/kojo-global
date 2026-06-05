@@ -73,7 +73,8 @@ export default function PricingFreeTiersSection() {
               {t.cta && (
                 <Link
                   href={t.cta.href}
-                  className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover transition-all whitespace-nowrap text-[12px] py-[11px] px-5 w-full"
+                  className="font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
+                  style={{ fontSize: '12px' }}
                 >
                   {t.cta.label}
                 </Link>

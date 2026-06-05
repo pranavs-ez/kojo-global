@@ -76,15 +76,6 @@ export default function SecurityEnterpriseSection() {
           ))}
         </div>
 
-        <div className="text-center">
-          <a
-            href="mailto:sales@kojo.global"
-            className="font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
-            style={{ fontSize: '13px' }}
-          >
-            Talk to the team about enterprise requirements →
-          </a>
-        </div>
 
       </div>
     </section>

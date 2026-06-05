@@ -16,7 +16,7 @@ export default function PricingCtaSection() {
           className="font-sans font-normal text-kj-light text-center"
           style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em', maxWidth: '760px' }}
         >
-          Your first 100,000 Kojo<CaretMotif /> are on us.
+          Your first 100,000 Kojo are on us<CaretMotif />
         </h2>
 
         <p className="font-sans font-light mt-5 text-center"

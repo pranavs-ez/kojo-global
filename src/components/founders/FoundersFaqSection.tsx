@@ -31,7 +31,7 @@ const FAQS = [
 ]
 
 export default function FoundersFaqSection() {
-  const [open, setOpen] = useState<number | null>(null)
+  const [open, setOpen] = useState<number | null>(0)
 
   return (
     <section

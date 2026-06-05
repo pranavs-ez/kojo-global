@@ -16,7 +16,7 @@ export default function FoundersCtaSection() {
           className="font-sans font-normal text-kj-light text-center"
           style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em', maxWidth: '800px' }}
         >
-          Your next board meeting is in three weeks.<CaretMotif /> Brief it today.
+          Your next board meeting is in three weeks<CaretMotif /> Brief it today.
         </h2>
 
         <p className="font-sans font-light mt-5 text-center"

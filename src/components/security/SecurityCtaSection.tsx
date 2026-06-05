@@ -40,13 +40,6 @@ export default function SecurityCtaSection() {
           </a>
         </div>
 
-        <p className="font-mono font-normal mt-8"
-          style={{ fontSize: '11px', color: 'rgba(248,248,242,0.25)' }}>
-          Standard accounts:{' '}
-          <Link href="/signup" className="text-kj-lime hover:opacity-70 transition-opacity">
-            Start free — your data is yours →
-          </Link>
-        </p>
 
       </div>
     </section>

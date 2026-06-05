@@ -23,10 +23,10 @@ const PROBLEMS = [
 ]
 
 const TABLE_ROWS = [
-  { attr: 'Cost',           agency: '$2,000–$5,000', kojo: 'From $60'               },
-  { attr: 'Delivery',       agency: '1–2 weeks',     kojo: '8 hours'                },
-  { attr: 'What you manage', agency: 'The account',   kojo: 'The brief'              },
-  { attr: 'First payment',  agency: 'Retainer before work starts', kojo: 'On delivery only' },
+  { attr: 'Cost',            agency: '$2,000–$5,000',           kojo: 'From $60'           },
+  { attr: 'Delivery',        agency: '1–2 weeks',               kojo: '8 hours'            },
+  { attr: 'What you manage', agency: 'The account',             kojo: 'The brief'          },
+  { attr: 'First payment',   agency: 'Retainer before work starts', kojo: 'On delivery only' },
 ]
 
 export default function FoundersAnchorSection() {
@@ -51,7 +51,7 @@ export default function FoundersAnchorSection() {
           Not an agency. Not a freelancer. Not a tool.
         </h2>
 
-        {/* Problem cards */}
+        {/* Problem cards — label → pain → quote (matches Figma order) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           {PROBLEMS.map((p) => (
             <div
@@ -63,30 +63,29 @@ export default function FoundersAnchorSection() {
                 borderRadius: '2px',
               }}
             >
-              <p className="font-mono font-normal text-kj-lime uppercase mb-3" style={{ fontSize: '10px', letterSpacing: '2px' }}>
+              <p className="font-mono font-normal text-kj-lime uppercase mb-4" style={{ fontSize: '10px', letterSpacing: '2px' }}>
                 {p.label}
               </p>
               <p className="font-sans font-normal text-kj-light mb-4 flex-1" style={{ fontSize: '14px', lineHeight: '1.6' }}>
                 {p.pain}
               </p>
-              <blockquote className="font-sans font-light italic"
-                style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(248,248,242,0.45)', borderLeft: '2px solid rgba(80,80,96,0.40)', paddingLeft: '12px' }}>
+              <blockquote
+                className="font-sans font-light italic"
+                style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(248,248,242,0.45)', borderLeft: '2px solid rgba(80,80,96,0.35)', paddingLeft: '12px' }}
+              >
                 {p.quote}
-                <footer className="mt-2 not-italic" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.25)' }}>{p.attr}</footer>
+                <footer className="mt-2 not-italic font-mono" style={{ fontSize: '10px', color: 'rgba(248,248,242,0.25)' }}>{p.attr}</footer>
               </blockquote>
             </div>
           ))}
         </div>
 
-        {/* Board memo comparison */}
-        <p className="font-mono font-normal uppercase mb-4" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(248,248,242,0.30)' }}>
-          Board memo — agency vs. Kojo
-        </p>
+        {/* Comparison table */}
         <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
           <table className="w-full border-collapse" style={{ minWidth: '400px' }}>
             <thead>
               <tr style={{ background: 'rgba(80,80,96,0.10)' }}>
-                <th className="text-left font-mono font-normal" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(248,248,242,0.35)', padding: '12px 16px', borderBottom: '1px solid rgba(80,80,96,0.25)', width: '30%' }}></th>
+                <th className="text-left font-mono font-normal" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(248,248,242,0.25)', padding: '12px 16px', borderBottom: '1px solid rgba(80,80,96,0.25)', width: '30%' }}></th>
                 <th className="text-left font-mono font-normal" style={{ fontSize: '10px', letterSpacing: '2px', color: 'rgba(248,248,242,0.35)', padding: '12px 16px', borderBottom: '1px solid rgba(80,80,96,0.25)' }}>AGENCY</th>
                 <th className="text-left font-mono font-normal" style={{ fontSize: '10px', letterSpacing: '2px', color: '#DEFF00', padding: '12px 16px', borderBottom: '1px solid rgba(80,80,96,0.25)' }}>KOJO</th>
               </tr>
@@ -95,7 +94,7 @@ export default function FoundersAnchorSection() {
               {TABLE_ROWS.map((r) => (
                 <tr key={r.attr} style={{ borderBottom: '1px solid rgba(80,80,96,0.14)' }}>
                   <td className="font-sans font-semibold text-kj-light" style={{ fontSize: '13px', padding: '13px 16px' }}>{r.attr}</td>
-                  <td className="font-sans font-light" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.40)', padding: '13px 16px', textDecoration: 'line-through' }}>{r.agency}</td>
+                  <td className="font-sans font-light" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.40)', padding: '13px 16px' }}>{r.agency}</td>
                   <td className="font-sans font-normal text-kj-light" style={{ fontSize: '13px', padding: '13px 16px' }}>{r.kojo}</td>
                 </tr>
               ))}

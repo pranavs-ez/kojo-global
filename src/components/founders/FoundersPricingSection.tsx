@@ -2,10 +2,17 @@
 import Link from 'next/link'
 
 const ITEMS = [
-  { brief: 'Board memo',          kojo: '60,000', usd: '$60'  },
-  { brief: 'Competitive snapshot', kojo: '95,000', usd: '$95'  },
-  { brief: 'Press release',       kojo: '40,000', usd: '$40'  },
-  { brief: 'Investor update',     kojo: '40,000', usd: '$40'  },
+  { brief: 'Board memo',           kojo: '60,000', usd: '$60' },
+  { brief: 'Competitive snapshot', kojo: '95,000', usd: '$95' },
+  { brief: 'Press release',        kojo: '40,000', usd: '$40' },
+  { brief: 'Investor update',      kojo: '40,000', usd: '$40' },
+]
+
+const TABLE_ROWS = [
+  { brief: 'Board memo',           kojo: '60,000', usd: '$60' },
+  { brief: 'Competitive snapshot', kojo: '95,000', usd: '$95' },
+  { brief: 'Press release',        kojo: '40,000', usd: '$40' },
+  { brief: 'Investor update',      kojo: '40,000', usd: '$40' },
 ]
 
 export default function FoundersPricingSection() {
@@ -30,6 +37,7 @@ export default function FoundersPricingSection() {
           No card required. Enough for a full competitive snapshot, a press release, or three investor update emails.
         </p>
 
+        {/* 4 highlight cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {ITEMS.map((item) => (
             <div
@@ -52,6 +60,36 @@ export default function FoundersPricingSection() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Pricing table */}
+        <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 mb-10">
+          <table className="w-full border-collapse" style={{ minWidth: '360px' }}>
+            <thead>
+              <tr style={{ background: 'rgba(80,80,96,0.10)' }}>
+                {['BRIEF', 'KOJO', 'USD'].map((h, i) => (
+                  <th key={h} className="text-left font-mono font-normal"
+                    style={{
+                      fontSize: '10px', letterSpacing: '2px',
+                      color: i === 1 ? '#DEFF00' : 'rgba(248,248,242,0.35)',
+                      padding: '12px 16px',
+                      borderBottom: '1px solid rgba(80,80,96,0.25)',
+                    }}>
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {TABLE_ROWS.map((r) => (
+                <tr key={r.brief} style={{ borderBottom: '1px solid rgba(80,80,96,0.12)' }}>
+                  <td className="font-sans" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.75)', padding: '13px 16px' }}>{r.brief}</td>
+                  <td className="font-mono text-kj-lime font-normal" style={{ fontSize: '13px', padding: '13px 16px' }}>{r.kojo}</td>
+                  <td className="font-mono font-light" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.50)', padding: '13px 16px' }}>{r.usd}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         <div className="text-center">

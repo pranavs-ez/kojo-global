@@ -36,13 +36,13 @@ function PostRaiseDashboard() {
             padding: '0 16px',
             height: '38px',
             background: i % 2 === 0 ? '#1E1E1E' : '#222222',
-            borderLeft: `3px solid ${t.urgent ? '#FF3CAC' : 'rgba(80,80,96,0.30)'}`,
+            borderLeft: `3px solid ${t.urgent ? '#DEFF00' : 'rgba(80,80,96,0.30)'}`,
           }}
         >
           <span className="font-sans" style={{ fontSize: '12px', color: t.urgent ? '#F5F5F0' : '#888' }}>
             {t.label}
           </span>
-          <span className="font-mono" style={{ fontSize: '10px', color: t.urgent ? '#FF3CAC' : 'rgba(80,80,96,0.50)' }}>
+          <span className="font-mono" style={{ fontSize: '10px', color: t.urgent ? '#DEFF00' : 'rgba(80,80,96,0.50)' }}>
             {t.due}
           </span>
         </div>

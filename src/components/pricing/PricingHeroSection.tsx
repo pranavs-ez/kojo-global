@@ -1,14 +1,14 @@
-// Pricing F1 — Hero | bg #1e1e1e
+// Pricing F1 — Hero | bg #1e1e1e | left-aligned
 import Link from 'next/link'
 
 export default function PricingHeroSection() {
   return (
     <section
-      className="kj-section"
+      className="kj-section kj-hero-grid"
       style={{ background: '#1e1e1e' }}
       aria-labelledby="pricing-hero-heading"
     >
-      <div className="kj-container flex flex-col items-center text-center">
+      <div className="kj-container">
 
         {/* Eyebrow */}
         <p className="font-mono font-normal text-kj-lime uppercase mb-5"
@@ -20,7 +20,7 @@ export default function PricingHeroSection() {
         <h1
           id="pricing-hero-heading"
           className="font-sans font-semibold text-kj-light"
-          style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: '1.1', letterSpacing: '-0.02em', maxWidth: '1000px' }}
+          style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: '1.1', letterSpacing: '-0.02em', maxWidth: '900px' }}
         >
           An agency charges $5,000 for a board memo. Kojo delivers the same output for $490.
         </h1>

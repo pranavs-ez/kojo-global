@@ -3,17 +3,17 @@
 
 const STEPS = [
   {
-    num: '1',
+    num: '01',
     title: 'Brief (10 minutes)',
     body: 'The guided wizard asks the eight questions that determine output quality — audience, tone, format, deadline, key messages. Most founders finish between calls.',
   },
   {
-    num: '2',
+    num: '02',
     title: 'Expert delivers (hours)',
     body: 'AI drafts. A subject matter expert reviews, corrects, and approves before the output leaves the system.',
   },
   {
-    num: '3',
+    num: '03',
     title: 'Done',
     body: 'Business-ready output in your inbox. No revision loop. No chasing. You manage the brief, not the expert.',
   },

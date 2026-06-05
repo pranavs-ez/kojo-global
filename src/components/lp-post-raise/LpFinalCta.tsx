@@ -1,5 +1,6 @@
 // LP Post-Raise F6 — Final CTA | bg #121212 | legal footer only, no site nav
 import Link from 'next/link'
+import CaretMotif from '@/components/atoms/CaretMotif'
 
 const CTA_HREF = '/signup'
 
@@ -16,7 +17,7 @@ export default function LpFinalCta() {
           className="font-sans font-normal text-kj-light text-center"
           style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em', maxWidth: '760px' }}
         >
-          Your first deliverable. Brief it today.
+          Your first deliverable<CaretMotif /> Brief it today.
         </h2>
 
         <p className="font-sans font-light mt-5 text-center"

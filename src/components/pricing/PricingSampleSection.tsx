@@ -26,42 +26,40 @@ function EstimatorWidget() {
       style={{
         width: '100%',
         maxWidth: '680px',
-        background: '#F5F5F0',
-        border: '1px solid #DDD',
+        background: '#1A1A1A',
+        border: '0.5px solid rgba(248,248,242,0.12)',
         borderRadius: '2px',
         padding: '20px',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
         margin: '0 auto',
       }}
     >
       <div className="flex justify-between items-center mb-3">
-        <span className="font-mono uppercase" style={{ fontSize: '11px', letterSpacing: '1px', color: '#888' }}>Brief estimator</span>
-        <span className="font-mono" style={{ fontSize: '10px', color: '#AAA' }}>Updates as you answer</span>
+        <span className="font-mono uppercase" style={{ fontSize: '11px', letterSpacing: '1px', color: 'rgba(248,248,242,0.40)' }}>Brief estimator</span>
+        <span className="font-mono" style={{ fontSize: '10px', color: 'rgba(248,248,242,0.25)' }}>Updates as you answer</span>
       </div>
 
       <div className="flex items-center gap-3 mb-3">
-        <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>Brief type:</span>
+        <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>Brief type:</span>
         <span className="font-sans"
-          style={{ fontSize: '11px', color: '#1A1A1A', background: '#F0F0F0', borderRadius: '2px', padding: '4px 12px' }}>
+          style={{ fontSize: '11px', color: '#F5F5F0', background: 'rgba(80,80,96,0.20)', borderRadius: '2px', padding: '4px 12px' }}>
           Competitive landscape (full)
         </span>
       </div>
 
-      <div style={{ height: '1px', background: '#EEE', marginBottom: '4px' }} />
+      <div style={{ height: '1px', background: 'rgba(80,80,96,0.25)', marginBottom: '4px' }} />
 
       {[
-        { label: 'Kojo cost',         value: '250,000 Kojo', size: '18px', bold: true },
-        { label: 'USD equivalent',    value: '$250',         size: '18px', bold: true },
+        { label: 'Kojo cost',         value: '250,000 Kojo', size: '18px', bold: true,  lime: true  },
+        { label: 'USD equivalent',    value: '$250',         size: '18px', bold: true,  lime: false },
         { label: 'Agency equivalent', value: '$8,000–$15,000 · 3–4 weeks', size: '13px', bold: false, muted: true },
       ].map((row) => (
         <div key={row.label} className="flex justify-between items-center" style={{ minHeight: '40px', padding: '0 4px' }}>
-          <span className="font-sans" style={{ fontSize: '11px', color: '#888' }}>{row.label}</span>
+          <span className="font-sans" style={{ fontSize: '11px', color: 'rgba(248,248,242,0.40)' }}>{row.label}</span>
           <span className="font-sans"
             style={{
               fontSize: row.size,
-              color: row.muted ? '#AAA' : '#1A1A1A',
+              color: row.muted ? 'rgba(248,248,242,0.30)' : row.lime ? '#DEFF00' : '#F5F5F0',
               fontWeight: row.bold ? 700 : 400,
-              textDecoration: row.muted ? 'line-through' : 'none',
             }}>
             {row.value}
           </span>
@@ -73,7 +71,7 @@ function EstimatorWidget() {
         <span className="font-sans" style={{ fontSize: '13px', color: '#1A1A1A', fontWeight: 700 }}>24 hours</span>
       </div>
 
-      <p className="font-mono text-center" style={{ fontSize: '9px', color: '#AAA', marginTop: '8px' }}>
+      <p className="font-mono text-center" style={{ fontSize: '9px', color: 'rgba(248,248,242,0.20)', marginTop: '8px' }}>
         Estimate updates with each question you answer
       </p>
     </div>
@@ -136,7 +134,7 @@ export default function PricingSampleSection() {
                   <td className="font-sans" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.75)', padding: '13px 12px' }}>{r.brief}</td>
                   <td className="font-mono text-kj-light font-normal" style={{ fontSize: '12px', padding: '13px 12px' }}>{r.kojo}</td>
                   <td className="font-mono text-kj-light font-normal" style={{ fontSize: '12px', padding: '13px 12px' }}>{r.usd}</td>
-                  <td className="font-sans font-light" style={{ fontSize: '12px', color: 'rgba(248,248,242,0.35)', padding: '13px 12px', textDecoration: 'line-through' }}>{r.agency}</td>
+                  <td className="font-sans font-light" style={{ fontSize: '12px', color: 'rgba(248,248,242,0.35)', padding: '13px 12px' }}>{r.agency}</td>
                   <td className="font-sans font-light" style={{ fontSize: '12px', color: 'rgba(248,248,242,0.35)', padding: '13px 12px' }}>{r.time}</td>
                   <td className="font-mono text-kj-lime font-normal" style={{ fontSize: '12px', padding: '13px 12px' }}>{r.delivery}</td>
                 </tr>

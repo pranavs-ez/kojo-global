@@ -27,7 +27,7 @@ const FAQS = [
 ]
 
 export default function SecurityFaqSection() {
-  const [open, setOpen] = useState<number | null>(null)
+  const [open, setOpen] = useState<number | null>(0)
 
   return (
     <section
