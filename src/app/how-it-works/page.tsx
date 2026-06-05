@@ -4,6 +4,7 @@ import HiwPipelineSection from '@/components/how-it-works/HiwPipelineSection'
 import HiwBriefSection    from '@/components/how-it-works/HiwBriefSection'
 import HiwOutputSection   from '@/components/how-it-works/HiwOutputSection'
 import HiwExpertSection   from '@/components/how-it-works/HiwExpertSection'
+import HiwMidCtaSection   from '@/components/how-it-works/HiwMidCtaSection'
 import HiwSlaSection      from '@/components/how-it-works/HiwSlaSection'
 import HiwApprovalSection from '@/components/how-it-works/HiwApprovalSection'
 import HiwFaqSection      from '@/components/how-it-works/HiwFaqSection'
@@ -40,6 +41,7 @@ export default function HowItWorksPage() {
       <HiwBriefSection />
       <HiwOutputSection />
       <HiwExpertSection />
+      <HiwMidCtaSection />
       <HiwSlaSection />
       <HiwApprovalSection />
       <HiwFaqSection />
