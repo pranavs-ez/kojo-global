@@ -3,6 +3,7 @@ import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
 import { headers } from 'next/headers'
 import Nav from '@/components/patterns/Nav'
 import Footer from '@/components/patterns/Footer'
+import RevealObserver from '@/components/layout/RevealObserver'
 import './globals.css'
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -48,6 +49,7 @@ export default async function RootLayout({
         {!isLp && <Nav />}
         <main id="main-content">{children}</main>
         {!isLp && <Footer />}
+        <RevealObserver />
       </body>
     </html>
   )

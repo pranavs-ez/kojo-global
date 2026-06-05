@@ -156,7 +156,7 @@ export default function HeroSection() {
       >
         <div
           className="flex items-center h-full whitespace-nowrap"
-          style={{ animation: 'kj-ticker 50s linear infinite' }}
+          style={{ animation: 'kj-ticker 22s linear infinite' }}
         >
           <span
             className="font-mono shrink-0"
