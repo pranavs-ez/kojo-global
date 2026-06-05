@@ -6,7 +6,7 @@
  * Strategy:
  * - Targets the direct children of every .kj-container that lives inside a
  *   <section> element, but ONLY for sections below the fold on load (no FOUC).
- * - Applies .kj-reveal (opacity:0, translateY(20px)) to each child, with a
+ * - Applies .kj-enter (opacity:0, translateY(20px)) to each child, with a
  *   staggered transition-delay (80 ms per child, capped at 5 children).
  * - An IntersectionObserver watches each qualifying section and adds
  *   .is-visible to all its .kj-container children when the section enters view.
@@ -47,7 +47,7 @@ export default function RevealObserver() {
       // Mark each direct child for reveal with a staggered delay
       const children = Array.from(container.children) as HTMLElement[]
       children.forEach((child, i) => {
-        child.classList.add('kj-reveal')
+        child.classList.add('kj-enter')
         const delay = Math.min(i, MAX_STAGGER - 1) * STAGGER_MS
         if (delay > 0) child.style.transitionDelay = `${delay}ms`
       })
