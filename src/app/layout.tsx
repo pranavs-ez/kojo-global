@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google'
+import { headers } from 'next/headers'
 import Nav from '@/components/patterns/Nav'
 import Footer from '@/components/patterns/Footer'
 import './globals.css'
@@ -27,11 +28,14 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://kojo.global'),
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const isLp = headersList.get('x-kojo-is-lp') === '1'
+
   return (
     <html
       lang="en"
@@ -41,9 +45,9 @@ export default function RootLayout({
         <a href="#main-content" className="kj-skip-link">
           Skip to main content
         </a>
-        <Nav />
+        {!isLp && <Nav />}
         <main id="main-content">{children}</main>
-        <Footer />
+        {!isLp && <Footer />}
       </body>
     </html>
   )
