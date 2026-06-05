@@ -26,7 +26,7 @@ export default function PricingCtaSection() {
 
         <div className="mt-10">
           <Link
-            href="/signup"
+            href="https://app.kojo.global"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap text-[12px] sm:text-[15px] px-6 sm:px-8 py-[15px]"
           >
             Start free →

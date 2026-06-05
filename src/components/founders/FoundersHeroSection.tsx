@@ -49,7 +49,7 @@ export default function FoundersHeroSection() {
 
         <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
           <Link
-            href="/signup"
+            href="https://app.kojo.global"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap text-[13px] sm:text-[15px] px-8 py-[15px]"
           >
             Start free — 100,000 Kojo on us →

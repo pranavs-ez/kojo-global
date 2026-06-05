@@ -22,7 +22,7 @@ export default function HiwMidCtaSection() {
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-8">
           <Link
-            href="/signup"
+            href="https://app.kojo.global"
             className="inline-flex items-center justify-center rounded-[2px] font-mono font-semibold text-kj-dark bg-kj-lime hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all whitespace-nowrap text-[12px] sm:text-[14px] px-6 sm:px-8 py-[15px]"
           >
             Start free — 100,000 Kojo on us →

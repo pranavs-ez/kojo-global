@@ -1,7 +1,7 @@
 // LP Post-Raise F1 — Hero | bg #1e1e1e | no nav | left-aligned
 import Link from 'next/link'
 
-const CTA_HREF = '/signup'
+const CTA_HREF = 'https://app.kojo.global'
 
 export default function LpHeroSection() {
   return (

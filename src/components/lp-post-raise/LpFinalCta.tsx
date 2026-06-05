@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import CaretMotif from '@/components/atoms/CaretMotif'
 
-const CTA_HREF = '/signup'
+const CTA_HREF = 'https://app.kojo.global'
 
 export default function LpFinalCta() {
   return (

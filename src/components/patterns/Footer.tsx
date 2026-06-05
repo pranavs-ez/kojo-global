@@ -6,7 +6,7 @@ const COL_PRODUCT = {
     { label: 'How it works', href: '/how-it-works' },
     { label: 'Pricing',      href: '/pricing' },
     { label: 'Security',     href: '/security' },
-    { label: 'Brief wizard', href: '/signup' },
+    { label: 'Brief wizard', href: 'https://app.kojo.global' },
   ],
 }
 

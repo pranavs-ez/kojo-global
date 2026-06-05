@@ -55,7 +55,7 @@ export default function Nav() {
 
           {/* CTA */}
           <Link
-            href="/signup"
+            href="https://app.kojo.global"
             className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] transition-all hover:bg-kj-lime-hover hover:drop-shadow-lime-cta"
           >
             Start free →
@@ -116,7 +116,7 @@ export default function Nav() {
             </nav>
             <div className="px-6 pt-5">
               <Link
-                href="/signup"
+                href="https://app.kojo.global"
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] hover:bg-kj-lime-hover hover:drop-shadow-lime-cta transition-all"
               >
