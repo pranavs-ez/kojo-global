@@ -5,7 +5,7 @@ export default function PricingHeroSection() {
   return (
     <section
       className="kj-section kj-hero-grid"
-      style={{ background: '#1e1e1e' }}
+      style={{ backgroundColor: '#1e1e1e' }}
       aria-labelledby="pricing-hero-heading"
     >
       <div className="kj-container">

@@ -6,7 +6,7 @@ export default function FoundersHeroSection() {
   return (
     <section
       className="kj-section kj-hero-grid"
-      style={{ background: '#1e1e1e' }}
+      style={{ backgroundColor: '#1e1e1e' }}
       aria-labelledby="founders-hero-heading"
     >
       <div className="kj-container">
@@ -21,7 +21,7 @@ export default function FoundersHeroSection() {
           className="font-sans font-semibold text-kj-light"
           style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)', lineHeight: '1.1', letterSpacing: '-0.02em', maxWidth: '820px' }}
         >
-          Congrats on the raise Now comes the war zone<CaretMotif />
+          Congrats on the raise.<br />Now comes the war zone<CaretMotif />
         </h1>
 
         <p className="font-sans font-normal mt-5 mb-8"

@@ -53,7 +53,7 @@ export default function PricingCreditSection() {
   return (
     <section
       className="kj-section kj-section-border"
-      style={{ background: '#212121' }}
+      style={{ background: '#181818' }}
       aria-labelledby="pricing-credit-heading"
     >
       <div className="kj-container">

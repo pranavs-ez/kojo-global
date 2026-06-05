@@ -27,7 +27,7 @@ export default function PricingVariablesSection() {
   return (
     <section
       className="kj-section kj-section-border"
-      style={{ background: '#212121' }}
+      style={{ background: '#1e1e1e' }}
       aria-labelledby="pricing-vars-heading"
     >
       <div className="kj-container">

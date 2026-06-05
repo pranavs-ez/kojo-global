@@ -1,4 +1,4 @@
-// Pricing F4 — Free Tiers | bg #1e1e1e
+// Pricing F4 — Free Tiers | bg #212121
 import Link from 'next/link'
 
 const TIERS = [
@@ -7,7 +7,7 @@ const TIERS = [
     usd: '$100',
     name: 'Standard signup',
     desc: 'No card required. Enough for a blog post, a press release, or a 3-competitor snapshot.',
-    cta: { label: 'Sign up free', href: '/signup' },
+    cta: { label: 'Sign up free →', href: '/signup' },
   },
   {
     amount: '250,000 Kojo',
@@ -29,7 +29,7 @@ export default function PricingFreeTiersSection() {
   return (
     <section
       className="kj-section kj-section-border"
-      style={{ background: '#1e1e1e' }}
+      style={{ background: '#212121' }}
       aria-labelledby="pricing-tiers-heading"
     >
       <div className="kj-container">
@@ -53,23 +53,31 @@ export default function PricingFreeTiersSection() {
               key={t.name}
               className="flex flex-col p-6"
               style={{
-                background: 'rgba(80,80,96,0.08)',
+                background: 'rgba(80,80,96,0.12)',
                 border: '0.5px solid rgba(248,248,242,0.07)',
                 borderRadius: '2px',
               }}
             >
-              <p className="font-mono" style={{ fontSize: '26px', color: '#DEFF00', fontWeight: 600, lineHeight: 1.1, marginBottom: '2px' }}>
+              {/* Amount + sub */}
+              <p className="font-mono" style={{ fontSize: '26px', color: '#DEFF00', fontWeight: 600, lineHeight: 1.1, marginBottom: '4px' }}>
                 {t.amount}
               </p>
-              <p className="font-sans font-light" style={{ fontSize: '13px', color: 'rgba(248,248,242,0.35)', marginBottom: '12px' }}>
-                {t.usd} free
+              <p className="font-sans font-light" style={{ fontSize: '13px', color: '#DEFF00', opacity: 0.65, marginBottom: '16px' }}>
+                ({t.usd}) free
               </p>
+
+              {/* Separator */}
+              <div style={{ height: '1px', background: 'rgba(80,80,96,0.30)', marginBottom: '16px' }} />
+
+              {/* Name + desc */}
               <p className="font-sans font-semibold text-kj-light mb-2" style={{ fontSize: '14px', lineHeight: '1.4' }}>
                 {t.name}
               </p>
               <p className="font-sans font-light flex-1" style={{ fontSize: '13px', lineHeight: '1.6', color: 'rgba(248,248,242,0.50)', marginBottom: t.cta ? '16px' : '0' }}>
                 {t.desc}
               </p>
+
+              {/* CTA */}
               {t.cta && (
                 <Link
                   href={t.cta.href}

@@ -4,7 +4,8 @@
 export default function LpProofSection() {
   return (
     <section
-      style={{ background: '#212121', padding: '72px 0' }}
+      className="kj-section-border"
+      style={{ background: "#212121", padding: "72px 0" }}
       aria-label="Social proof"
     >
       <div className="kj-container flex flex-col items-center text-center">

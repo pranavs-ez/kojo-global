@@ -7,7 +7,8 @@ const CTA_HREF = '/signup'
 export default function LpFinalCta() {
   return (
     <section
-      style={{ background: '#121212', padding: '72px 0 0' }}
+      className="kj-section-border"
+      style={{ background: "#121212", padding: "72px 0 0" }}
       aria-labelledby="lp-final-cta-heading"
     >
       <div className="kj-container flex flex-col items-center text-center">
@@ -17,7 +18,7 @@ export default function LpFinalCta() {
           className="font-sans font-normal text-kj-light text-center"
           style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: '1.15', letterSpacing: '-0.02em', maxWidth: '760px' }}
         >
-          Your first deliverable<CaretMotif /> Brief it today.
+          Your first deliverable<CaretMotif /><br />Brief it today.
         </h2>
 
         <p className="font-sans font-light mt-5 text-center"

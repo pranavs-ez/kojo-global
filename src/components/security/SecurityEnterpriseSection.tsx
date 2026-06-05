@@ -76,6 +76,19 @@ export default function SecurityEnterpriseSection() {
           ))}
         </div>
 
+        {/* Enterprise CTA */}
+        <div className="mt-6 pt-6" style={{ borderTop: '1px solid rgba(80,80,96,0.20)' }}>
+          <p className="font-sans font-normal text-kj-light mb-3" style={{ fontSize: '16px', lineHeight: '1.5' }}>
+            Ready to discuss enterprise requirements?
+          </p>
+          <a
+            href="mailto:sales@kojo.global"
+            className="font-mono font-normal text-kj-lime hover:opacity-70 transition-opacity"
+            style={{ fontSize: '13px' }}
+          >
+            Talk to the team →
+          </a>
+        </div>
 
       </div>
     </section>

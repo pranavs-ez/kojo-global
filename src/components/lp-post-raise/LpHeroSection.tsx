@@ -6,7 +6,7 @@ const CTA_HREF = '/signup'
 export default function LpHeroSection() {
   return (
     <section
-      style={{ background: '#1e1e1e', padding: '80px 0 72px' }}
+      style={{ backgroundColor: '#1e1e1e', padding: '80px 0 72px' }}
       aria-labelledby="lp-hero-heading"
     >
       <div className="kj-container">

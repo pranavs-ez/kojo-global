@@ -2,10 +2,10 @@
 import Link from 'next/link'
 
 const ITEMS = [
-  { brief: 'Board memo',           kojo: '60,000', usd: '$60' },
-  { brief: 'Competitive snapshot', kojo: '95,000', usd: '$95' },
-  { brief: 'Press release',        kojo: '40,000', usd: '$40' },
-  { brief: 'Investor update',      kojo: '40,000', usd: '$40' },
+  { brief: 'Board memo',           kojo: '60,000 Kojo', usd: '$60' },
+  { brief: 'Competitive snapshot', kojo: '95,000 Kojo', usd: '$95' },
+  { brief: 'Press release',        kojo: '40,000 Kojo', usd: '$40' },
+  { brief: 'Investor update',      kojo: '40,000 Kojo', usd: '$40' },
 ]
 
 const TABLE_ROWS = [

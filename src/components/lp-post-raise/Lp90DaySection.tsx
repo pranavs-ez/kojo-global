@@ -88,6 +88,7 @@ function ChecklistWidget() {
 export default function Lp90DaySection() {
   return (
     <section
+      className="kj-section-border"
       style={{ background: '#212121', padding: '72px 0' }}
       aria-labelledby="lp-90day-heading"
     >
@@ -128,7 +129,7 @@ export default function Lp90DaySection() {
           </div>
 
           {/* Right: checklist widget */}
-          <div className="w-full lg:w-auto lg:flex-shrink-0 flex justify-start lg:justify-end">
+          <div className="w-full lg:w-auto lg:flex-shrink-0 lg:ml-auto">
             <ChecklistWidget />
           </div>
 

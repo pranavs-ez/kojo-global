@@ -22,7 +22,8 @@ const ROWS = [
 export default function LpAnchorSection() {
   return (
     <section
-      style={{ background: '#1e1e1e', padding: '72px 0' }}
+      className="kj-section-border"
+      style={{ background: "#1e1e1e", padding: "72px 0" }}
       aria-labelledby="lp-anchor-heading"
     >
       <div className="kj-container">
