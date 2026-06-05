@@ -7,7 +7,7 @@ const TIERS = [
     usd: '$100',
     name: 'Standard signup',
     desc: 'No card required. Enough for a blog post, a press release, or a 3-competitor snapshot.',
-    cta: { label: 'Sign up free →', href: '/signup' },
+    cta: { label: 'Sign up free →', href: 'https://app.kojo.global' },
   },
   {
     amount: '250,000 Kojo',
