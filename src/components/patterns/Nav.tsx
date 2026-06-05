@@ -28,7 +28,6 @@ export default function Nav() {
         }}
       >
         <div className="flex items-center justify-between h-[64px] px-[120px] max-w-[1440px] mx-auto">
-          {/* Wordmark */}
           <Link
             href="/"
             className="font-mono text-[18px] text-kj-light tracking-[4px] uppercase hover:opacity-80 transition-opacity"
@@ -37,7 +36,6 @@ export default function Nav() {
             KOJO
           </Link>
 
-          {/* Nav links */}
           <nav aria-label="Main navigation">
             <ul className="flex items-center gap-8 list-none m-0 p-0">
               {NAV_LINKS.map((link) => (
@@ -53,7 +51,6 @@ export default function Nav() {
             </ul>
           </nav>
 
-          {/* CTA */}
           <Link
             href="https://app.kojo.global"
             className="inline-flex items-center justify-center px-5 py-[10px] bg-kj-lime text-kj-dark font-mono font-medium text-[13px] rounded-[2px] transition-all hover:bg-kj-lime-hover hover:drop-shadow-lime-cta"
@@ -94,15 +91,34 @@ export default function Nav() {
           </button>
         </div>
 
-        {open && (
-          <div
-            id="mobile-nav"
-            className="absolute top-full left-0 right-0 bg-kj-dark border-t border-kj-light/10 pb-6"
-          >
+        {/* Dropdown — solid bg, height-animated */}
+        <div
+          id="mobile-nav"
+          aria-hidden={!open}
+          style={{
+            overflow: 'hidden',
+            maxHeight: open ? '320px' : '0px',
+            transition: 'max-height 380ms cubic-bezier(0.16, 1, 0.3, 1)',
+            pointerEvents: open ? 'auto' : 'none',
+            background: '#1e1e1e',
+            borderTop: '1px solid rgba(248,248,242,0.08)',
+          }}
+          className="absolute top-full left-0 right-0"
+        >
+          <div className="pb-6">
             <nav aria-label="Mobile navigation">
               <ul className="list-none m-0 p-0">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.href}>
+                {NAV_LINKS.map((link, i) => (
+                  <li
+                    key={link.href}
+                    style={{
+                      opacity: open ? 1 : 0,
+                      transform: open ? 'none' : 'translateY(-6px)',
+                      transition: open
+                        ? `opacity 200ms ease ${50 + i * 50}ms, transform 260ms cubic-bezier(0.16, 1, 0.3, 1) ${50 + i * 50}ms`
+                        : 'none',
+                    }}
+                  >
                     <Link
                       href={link.href}
                       onClick={() => setOpen(false)}
@@ -114,7 +130,16 @@ export default function Nav() {
                 ))}
               </ul>
             </nav>
-            <div className="px-6 pt-5">
+            <div
+              className="px-6 pt-5"
+              style={{
+                opacity: open ? 1 : 0,
+                transform: open ? 'none' : 'translateY(-6px)',
+                transition: open
+                  ? `opacity 200ms ease ${50 + NAV_LINKS.length * 50}ms, transform 260ms cubic-bezier(0.16, 1, 0.3, 1) ${50 + NAV_LINKS.length * 50}ms`
+                  : 'none',
+              }}
+            >
               <Link
                 href="https://app.kojo.global"
                 onClick={() => setOpen(false)}
@@ -124,8 +149,24 @@ export default function Nav() {
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </header>
+
+      {/* Page blur overlay — sits below the nav, above page content, only visible when mobile nav is open */}
+      <div
+        aria-hidden="true"
+        onClick={() => setOpen(false)}
+        className="md:hidden fixed inset-0 z-[1029]"
+        style={{
+          top: '56px',
+          backdropFilter: 'blur(6px)',
+          WebkitBackdropFilter: 'blur(6px)',
+          background: 'rgba(0,0,0,0.25)',
+          opacity: open ? 1 : 0,
+          transition: 'opacity 280ms ease',
+          pointerEvents: open ? 'auto' : 'none',
+        }}
+      />
     </>
   )
 }
