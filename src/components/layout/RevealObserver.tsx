@@ -1,97 +1,108 @@
 'use client'
 
 /**
- * RevealObserver — site-wide scroll reveal.
+ * RevealObserver — site-wide scroll reveal + hero entrance.
  *
- * Strategy:
- * - Targets the direct children of every .kj-container that lives inside a
- *   <section> element, but ONLY for sections below the fold on load (no FOUC).
- * - Applies .kj-enter (opacity:0, translateY(20px)) to each child, with a
- *   staggered transition-delay (80 ms per child, capped at 5 children).
- * - An IntersectionObserver watches each qualifying section and adds
- *   .is-visible to all its .kj-container children when the section enters view.
- * - Cleans up inline transition-delay after the animation completes so it
- *   doesn't interfere with any future layout updates.
- * - Bails out entirely when prefers-reduced-motion is set.
- * - Returns null — renders nothing in the DOM.
+ * Re-runs on every pathname change so animations fire on every page
+ * after client-side navigation in Next.js App Router.
+ *
+ * Uses setTimeout(0) so only the final effect invocation runs the setup —
+ * React StrictMode double-invokes effects in development, and the cleanup
+ * calls clearTimeout, ensuring the first run's setup is always cancelled.
+ *
+ * CSS contract (globals.css):
+ *   .kj-enter              → opacity:0, translateY(20px) — instant hide
+ *   .kj-enter.is-visible   → opacity:1, translateY(0) WITH transition
+ *   --reveal-delay         → CSS variable for per-child stagger delay
  */
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
-const STAGGER_MS = 80   // delay increment per child
-const MAX_STAGGER = 5   // cap at 5 children to avoid overly long chains
-const CLEANUP_MS = 1200 // how long after reveal to remove inline delay
+const STAGGER_MS  = 120  // delay increment per child
+const MAX_STAGGER = 5    // cap stagger at 5 children
+const HERO_BASE   = 150  // base delay for above-fold children (ms)
 
 export default function RevealObserver() {
+  const pathname = usePathname()
+
   useEffect(() => {
-    // Respect user motion preference
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const vh = window.innerHeight
+    let observer: IntersectionObserver | null = null
 
-    // Collect all sections that have a .kj-container
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('section')
-    )
-
-    const toWatch: HTMLElement[] = []
-
-    sections.forEach(section => {
-      // Skip sections already visible on load (hero, above-fold content)
-      const { top } = section.getBoundingClientRect()
-      if (top < vh * 0.9) return
-
-      const container = section.querySelector<HTMLElement>('.kj-container')
-      if (!container) return
-
-      // Mark each direct child for reveal with a staggered delay
-      const children = Array.from(container.children) as HTMLElement[]
-      children.forEach((child, i) => {
-        child.classList.add('kj-enter')
-        const delay = Math.min(i, MAX_STAGGER - 1) * STAGGER_MS
-        if (delay > 0) child.style.transitionDelay = `${delay}ms`
+    // setTimeout(0) defers to next macrotask so React StrictMode's
+    // cleanup+re-run cycle completes before we touch the DOM.
+    const timer = setTimeout(() => {
+      // Clean up any classes left over from the previous page
+      document.querySelectorAll('.kj-enter').forEach(el => {
+        el.classList.remove('kj-enter', 'is-visible')
+        ;(el as HTMLElement).style.removeProperty('--reveal-delay')
       })
 
-      toWatch.push(section)
-    })
+      const vh = window.innerHeight
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('section'))
+      const toWatch: HTMLElement[] = []
 
-    if (toWatch.length === 0) return
+      sections.forEach(section => {
+        const { top } = section.getBoundingClientRect()
+        const container = section.querySelector<HTMLElement>('.kj-container')
+        if (!container) return
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return
+        const children = Array.from(container.children) as HTMLElement[]
 
-          const section = entry.target as HTMLElement
-          const container = section.querySelector<HTMLElement>('.kj-container')
-          if (container) {
-            const children = Array.from(container.children) as HTMLElement[]
-            children.forEach(child => {
-              child.classList.add('is-visible')
-              // Clean up inline delay once the transition is done
-              const delay = parseFloat(child.style.transitionDelay || '0') || 0
-              setTimeout(
-                () => { child.style.transitionDelay = '' },
-                CLEANUP_MS + delay
-              )
+        if (top < vh * 0.9) {
+          // ── Above-fold: animate in on page load ─────────────────────────
+          children.forEach((child, i) => {
+            const delay = HERO_BASE + Math.min(i, MAX_STAGGER - 1) * STAGGER_MS
+            child.style.setProperty('--reveal-delay', `${delay}ms`)
+            child.classList.add('kj-enter')
+          })
+
+          // Double-rAF: paint one opacity:0 frame, then trigger transition
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              children.forEach(child => child.classList.add('is-visible'))
             })
-          }
+          })
+        } else {
+          // ── Below-fold: reveal on scroll ────────────────────────────────
+          children.forEach((child, i) => {
+            const delay = Math.min(i, MAX_STAGGER - 1) * STAGGER_MS
+            if (delay > 0) child.style.setProperty('--reveal-delay', `${delay}ms`)
+            child.classList.add('kj-enter')
+          })
+          toWatch.push(section)
+        }
+      })
 
-          observer.unobserve(section)
-        })
-      },
-      {
-        // Fire when 8 % of the section is visible, with a small bottom offset
-        // so sections don't snap in right at the viewport edge
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    )
+      if (toWatch.length === 0) return
 
-    toWatch.forEach(section => observer.observe(section))
+      observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            const section = entry.target as HTMLElement
+            const container = section.querySelector<HTMLElement>('.kj-container')
+            if (container) {
+              ;(Array.from(container.children) as HTMLElement[]).forEach(child => {
+                child.classList.add('is-visible')
+              })
+            }
+            observer?.unobserve(section)
+          })
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      )
 
-    return () => observer.disconnect()
-  }, [])
+      toWatch.forEach(s => observer!.observe(s))
+    }, 0)
+
+    return () => {
+      clearTimeout(timer)
+      observer?.disconnect()
+    }
+  }, [pathname])
 
   return null
 }
